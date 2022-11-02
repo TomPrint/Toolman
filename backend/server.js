@@ -1,13 +1,13 @@
-require("dotenv").config();
+//! IMPORTS & STARTER FUNCTIONS
 
-// !IMPORTS
+require("dotenv").config();
 const express = require("express");
 const toolmanRoutes = require("./routes/tools");
 
 // to start an express app
 const app = express();
 
-//!MIDDLEWARE
+//! MIDDLEWARE
 
 // middleware to show log of path and request method
 app.use((req, res, next) => {
@@ -19,8 +19,11 @@ app.use((req, res, next) => {
 app.use(express.json());
 
 //! ROUTES
+
 // uses tools.js in Routes folder to load routes
 app.use("/api/tools", toolmanRoutes);
+
+//! OTHER ACTIONS
 
 //listen for requests
 app.listen(process.env.PORT, () => {
