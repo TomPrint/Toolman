@@ -8,3 +8,15 @@ setting nodemon start script command from nodemon server.js to "npm run app" ins
 "npm install dotenv" to support .env variables
 create middleware to log type of requests
 create Routes folder and tools.js file to list requests and routes
+
+03/11/22 - part 1 -  mongo using mongoose
+"npm install mongoose" //to install mongoose package
+create new db on mongodb website
+edit .env file to set MONGO_URI
+update server.js file to connect to mongodb using mongoose.connect
+
+03/11/22 - part 2 - create itemModel + edit post new itemModel
+create models folder
+create itemModel.js
+create a new model using Mongoose Schema
+update POST a new item in tools.js. Destructureing req.body.Use Item.create() Add async and await. Add try/catch. Add res.status
