@@ -17,12 +17,12 @@ router.post("/", (req, res) => {
   res.json({ mssg: "POST an item " });
 });
 
-// DELETE a iten
+// DELETE a item
 router.delete("/:id", (req, res) => {
   res.json({ mssg: "DELETE an item" });
 });
 
-// UPDATE a iten
+// UPDATE a item
 router.patch("/:id", (req, res) => {
   res.json({ mssg: "UPDATE an item" });
 });
