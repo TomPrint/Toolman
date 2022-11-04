@@ -1,32 +1,20 @@
 const express = require('express');
-const Item = require('../models/itemModel')
+const { 
+  createItem,
+   getItems,
+   getItem
+   } = require('../controllers/itemController')
 
 const router = express.Router();
 
 // GET all items
-router.get("/", (req, res) => {
-  res.json({ mssg: "GET all items" });
-});
+router.get("/", getItems)
 
 // GET a single item
-router.get("/:id", (req, res) => {
-  res.json({ mssg: "GET a single item" });
-});
+router.get("/:id", getItem)
 
 // POST a new item
-router.post("/", async (req, res) => {
-  
-  //destructuring form req.body
-  const {title, model, serialNumber, yearOfProduction } = req.body
-  
-  //try-catch to create new Item and catch error. Add "await" because of "async" - Js promise above
-  try {
-    const item = await Item.create({title, model, serialNumber, yearOfProduction })
-    res.status(200).json(item)
-  } catch(error){
-    res.status(400).json({error: error.message})
-  }
-});
+router.post("/", createItem)
 
 // DELETE a item
 router.delete("/:id", (req, res) => {
