@@ -16,6 +16,7 @@ const createItem = async (req, res) => {
 }
 
 //! GET all items
+
 const getItems = async (req, res) => {
   //grab all items and sorted descending with created date
   const items = await Item.find({}).sort({createdAt:-1})
@@ -23,6 +24,7 @@ const getItems = async (req, res) => {
 }
 
 //! GET single item
+
 const getItem = async (req, res) => {
   //grab id from req.params
   const { id } = req.params 
@@ -42,10 +44,54 @@ const getItem = async (req, res) => {
 
 // DELETE item
 
+const deleteItem = async (req,res) => {
+  //grab id from req.params
+  const { id } = req.params 
+  //check if id is valid type of mongoose id. If not res error.
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(404).json({error: 'No such item'})
+  }
+  //in mongoose id = _id. So function - finds and delete the item that _id is id that we took from req.params
+  const item = await Item.findOneAndDelete({_id: id })
+
+  // if no item - res error
+  if (!item) {
+    return res.status(404).json({error: 'No such item'})
+  }
+  //if item is present, response ok status
+  res.status(200).json(item)
+
+}
 // UPDATE item
+
+const updateItem = async (req,res) => {
+  //grab id from req.params
+  const { id } = req.params 
+  //check if id is valid type of mongoose id. If not res error.
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(404).json({error: 'No such item'})
+  }
+  // update the item found by id, as a second argument we pass new data frome req.body
+  const item = await Item.findOneAndUpdate({_id: id }, {
+    // req.body is an object so we spread that object into properties by ...
+    ...req.body
+  })
+  // if no item - res error
+  if (!item) {
+    return res.status(404).json({error: 'No such item'})
+  }
+  //if item is present, response ok status
+  res.status(200).json(item)
+}
+
+
+
+
 
 module.exports = {
     createItem,
     getItems,
-    getItem
+    getItem,
+    deleteItem,
+    updateItem,
 }

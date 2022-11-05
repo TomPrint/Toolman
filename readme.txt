@@ -21,9 +21,13 @@
 - create a new model using Mongoose Schema
 - update POST a new item in tools.js. Destructureing req.body.Use Item.create() Add async and await. Add try/catch. Add res.status
 
-04/11/22 - part 1 - add controllers
-- create controllers foldeer
+04/11/22 - add controllers -part1
+- create controllers folder
 - create itemControllers.js
 - general purpose -> move (POST,GET,UPDATE, PATCH) functions declarations from tools.js to controllers
 - create createtItem, getItem, getItems in itemControllers.js and export them 
 - import above functions to tools.js
+
+05/11/22 - add controllers - part2
+- create delete and update controller
+- update tools.js and itemControllers.js in the same way as in part 1.
