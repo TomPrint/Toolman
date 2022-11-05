@@ -44,3 +44,13 @@
 - create Home.js in pages folder
 - import Link form react router and create first link in Navbar.js
 - update App.js using routing package, display Navbar and Home. First import both at the top.
+
+05/11/22 - install Tailwind
+- cd to frontend directory
+- follow the doc on tailwindcss.com:
+    - "npm install -D tailwindcss postcss autoprefixer" to install
+    - "npx tailwindcss init -p" to init command and generate tailwind.config.js and postcss.config.js
+    - and in tailwind.config.js  content: ["./src/**/*.{js,jsx,ts,tsx}",]
+    - add @tailwind in index.css
+- install react-icons "npm install react-icons --save"
+- create a Navbar with Tailwind styling

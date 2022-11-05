@@ -1,7 +1,7 @@
 const Home = () => {
     return (
-        <div className="home">
-            <h2>Home page</h2>
+        <div className="flex justify-between items-center h-24 max-w-[1240px] mx-auto px-4 text-white">
+           <h2>Home Page</h2>
         </div>
     )
 }
