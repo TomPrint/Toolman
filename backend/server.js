@@ -5,6 +5,7 @@ require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose")
 const toolmanRoutes = require("./routes/tools");
+const userRoutes = require('./routes/user')
 
 // to start an express app
 const app = express();
@@ -24,6 +25,9 @@ app.use(express.json());
 
 // uses tools.js in Routes folder to load routes
 app.use("/api/tools", toolmanRoutes);
+
+// user routes
+app.use('/api/user', userRoutes)
 
 //! OTHER ACTIONS
 

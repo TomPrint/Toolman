@@ -11,17 +11,17 @@ const Footer = () => {
             </Link>
           </li>
           <li className="px-4">
-            <Link to="about" smooth={true} duration={400}>
+            <Link to="link2" smooth={true} duration={400}>
               Link 2
             </Link>
           </li>
           <li className="px-4">
-            <Link to="skills" smooth={true} duration={400}>
+            <Link to="link3" smooth={true} duration={400}>
               Link 3
             </Link>
           </li>
           <li className="px-4">
-            <Link to="work" smooth={true} duration={400}>
+            <Link to="link4" smooth={true} duration={400}>
               Link 4
             </Link>
           </li>
