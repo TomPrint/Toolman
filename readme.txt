@@ -54,3 +54,6 @@
     - add @tailwind in index.css
 - install react-icons "npm install react-icons --save"
 - create a Navbar with Tailwind styling
+
+06/11 - create footer
+- create footer using tailwind
