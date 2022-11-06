@@ -15,10 +15,11 @@ const Navbar = () => {
             <div className="flex justify-between items-center h-24 max-w-[1240px] mx-auto px-4 text-white ">
                 <Link to='/'><span className='flex'><h1 className='w-full text-3xl font-bold text-[#00df9a]'>Toolman</h1><AiOutlineTool size={30} color='#00df9a'/></span></Link>
                 <ul className='hidden md:flex'>
-                    <Link to='/'><li className='p-4'>Home</li></Link>
-                    <li className='p-4'>Items</li>
-                    <li className='p-4'>Workers</li>
-                    <li className='p-4'>About</li>
+                    <Link to='/'><li className='p-4 hover:text-[#00df9a] transition-all'>Home</li></Link>
+                    <li className='p-4 hover:text-[#00df9a] transition-all duration-500'>Items</li>
+                    <li className='p-4 hover:text-[#00df9a] transition-all duration-500'>Workers</li>
+                    <li className='p-4 hover:text-[#00df9a] transition-all duration-500'>About</li>
+                    <button class="px-2 ml-4 bg-gray-500 hover:bg-[#00df9a] transition-all duration-500 text-white text-sm rounded-full">Login</button>
                 </ul>
                 
                 {/* onClick change icon of menu depend on the state */}
@@ -26,12 +27,12 @@ const Navbar = () => {
                     {nav ? <AiOutlineClose size={20} /> : <AiOutlineMenu size={20} />}
                 </div>
                 {/* changes styling depend on the nav state */}
-                <ul className={nav ? 'fixed left-0 top-0 w-[60%] h-full border-y border-black bg-black ease-in-out duration-500 md:hidden' : 'ease-in-out duration-500 fixed left-[-100%]'}>
-                    <h1 className='w-full text-3xl font-bold text-[#00df9a] m-4'>Toolman</h1>
-                        <li className='p-4 border-b border-gray-700'>Home</li>
-                        <li className='p-4 border-b border-gray-700'>Items</li>
-                        <li className='p-4 border-b border-gray-700'>Workers</li>
-                        <li className='p-4 border-b border-gray-700'>About</li>
+                <ul className={nav ? 'fixed left-0 top-0 w-[60%] h-full border-y bg-[#2E4053] ease-in-out duration-500 md:hidden' : 'ease-in-out duration-500 fixed left-[-100%]'}>
+                    <h1 className='w-full text-3xl font-bold text-[#00df9a] m-4'>Menu</h1>
+                        <li className='p-4 border-b border-gray-500'>Home</li>
+                        <li className='p-4 border-b border-gray-500'>Items</li>
+                        <li className='p-4 border-b border-gray-500'>Workers</li>
+                        <li className='p-4 border-b border-gray-500'>About</li>
                 </ul>
             </div>
      );
