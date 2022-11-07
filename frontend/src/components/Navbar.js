@@ -19,7 +19,7 @@ const Navbar = () => {
                     <li className='p-4 hover:text-[#00df9a] transition-all duration-500'>Items</li>
                     <li className='p-4 hover:text-[#00df9a] transition-all duration-500'>Workers</li>
                     <li className='p-4 hover:text-[#00df9a] transition-all duration-500'>About</li>
-                    <button class="px-2 ml-4 bg-gray-500 hover:bg-[#00df9a] transition-all duration-500 text-white text-sm rounded-full">Login</button>
+                    <button className="px-2 ml-4 bg-gray-500 hover:bg-[#00df9a] transition-all duration-500 text-white text-sm rounded-full">Login</button>
                 </ul>
                 
                 {/* onClick change icon of menu depend on the state */}
