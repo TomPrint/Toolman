@@ -58,16 +58,18 @@
 06/11 - create footer
 - create footer using tailwind
 
-06/11 - create user model
+06/11 - create user model in express
 - "npm install validator"
 - "npm install bcrypt"
 - "npm install jsonwebtoken"
 - create userModel.js with validation and methods
 
-07/11 - create login & signup page
+07/11 - create login & signup logic in express
 - create userController.js
 - create user.js routes
 - add user routes to server.js
 - create requireAuth.js middleware for using routes only for authenticated users
 
-
+07/11 - update login and user login in express
+- update userController.js with if-check for login restricted to isAdmin == true only
+- create '/userlist' route in user.js to list all users
