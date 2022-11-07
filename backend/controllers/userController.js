@@ -45,7 +45,6 @@ const loginUser = async (req, res) => {
 }
 
 //! GET all users
-
 const getUsers = async (req, res) => {
   //grab all users and sort descending by creation date
   try {

@@ -80,3 +80,14 @@
 - in fetch we use as path api/tools because we have so in the roots and have proxy for localhost:4000
 - we return html at the and with map function to cycle thru all items
 
+08/11 - create AuthContextProvider
+- create context folder and AuthContext.js to be used as AuthContextProvider for tracking global user state
+- add </AuthContextProvider> to index.js file and wrap the child
+- create hooks folder and useAuthContext hook, which enables any component to get the current auth state and re-render if it changes
+
+08/11 - create signup form for user registration
+- create signup form with choice field for isAdmin
+- add Signup element to App.js routes
+
+
+
