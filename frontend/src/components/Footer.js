@@ -6,22 +6,22 @@ const Footer = () => {
       <div className="container flex justify-between">
         <ul className="flex item items-center">
           <li className="p-4">
-            <Link to="home" smooth={true} duration={400}>
+            <Link to="home">
               Link 1
             </Link>
           </li>
           <li className="px-4">
-            <Link to="link2" smooth={true} duration={400}>
+            <Link to="link2">
               Link 2
             </Link>
           </li>
           <li className="px-4">
-            <Link to="link3" smooth={true} duration={400}>
+            <Link to="link3">
               Link 3
             </Link>
           </li>
           <li className="px-4">
-            <Link to="link4" smooth={true} duration={400}>
+            <Link to="link4">
               Link 4
             </Link>
           </li>

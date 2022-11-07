@@ -73,3 +73,10 @@
 07/11 - update login and user login in express
 - update userController.js with if-check for login restricted to isAdmin == true only
 - create '/userlist' route in user.js to list all users
+
+07/11 - fetching data for Home.js
+- add "proxy":"http://localhost:4000" in FRONTEND! package.json
+- useEffect with useState in Home.js and awiat fetch to pass data from databes
+- in fetch we use as path api/tools because we have so in the roots and have proxy for localhost:4000
+- we return html at the and with map function to cycle thru all items
+

@@ -10,11 +10,11 @@ const router = express.Router()
 //! login route
 router.post('/login', loginUser)
 
-
 //! signup route
 router.post('/signup', requireAuth, signupUser)
 
-module.exports = router
-
 //! getAllUsers routes
 router.get('/userlist', getUsers)
+
+
+module.exports = router
