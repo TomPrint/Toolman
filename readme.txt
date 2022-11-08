@@ -89,5 +89,7 @@
 - create signup form with choice field for isAdmin
 - add Signup element to App.js routes
 
+08/11 - styling for items list in Workouts
+- add tailwind styles for items card
 
 

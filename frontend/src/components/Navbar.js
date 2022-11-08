@@ -12,7 +12,7 @@ const Navbar = () => {
     };
 
     return ( 
-            <div className="flex justify-between items-center h-24 max-w-[1240px] mx-auto px-4 text-white ">
+            <div className="flex justify-between items-center h-24 max-w-[1240px] mx-auto px-4 text-white">
                 <Link to='/'><span className='flex'><h1 className='w-full text-3xl font-bold text-[#00df9a]'>Toolman</h1><AiOutlineTool size={30} color='#00df9a'/></span></Link>
                 <ul className='hidden md:flex'>
                     <Link to='/'><li className='p-4 hover:text-[#00df9a] transition-all'>Home</li></Link>
