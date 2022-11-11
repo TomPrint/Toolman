@@ -92,4 +92,12 @@
 08/11 - styling for items list in Workouts
 - add tailwind styles for items card
 
+11/11 - css styling and route changes
+- showing items on items page insted of Home
+- add styling to items cards
+- create ItemDetail.js component to style the template here insted of Items.js
 
+11/11 - new item form
+- create ItemForm.js to add new Item
+- add new link in Navbar for adding new Item
+- update Routes in backend tools.js

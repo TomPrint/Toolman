@@ -6,6 +6,8 @@ import Home from "./pages/Home";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Signup from "./pages/Signup"
+import Items from "./pages/Items";
+import ItemForm from "./components/ItemForm";
 function App() {
   return (
     <div className="App">
@@ -15,6 +17,8 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/signup" element={<Signup />} />
+            <Route path="/items" element={<Items />} />
+            <Route path="/items/add" element={<ItemForm />} />
           </Routes>
           <Footer />
         </div>
