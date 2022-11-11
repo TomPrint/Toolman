@@ -8,6 +8,9 @@ import Footer from "./components/Footer";
 import Signup from "./pages/Signup"
 import Items from "./pages/Items";
 import ItemForm from "./components/ItemForm";
+import Login from "./pages/Login";
+import Admin from "./pages/Admin";
+
 function App() {
   return (
     <div className="App">
@@ -16,7 +19,9 @@ function App() {
         <div className="pages text-white">
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/admin" element={<Admin />} />
             <Route path="/signup" element={<Signup />} />
+            <Route path="/login" element={<Login />} />
             <Route path="/items" element={<Items />} />
             <Route path="/items/add" element={<ItemForm />} />
           </Routes>

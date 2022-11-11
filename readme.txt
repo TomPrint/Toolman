@@ -101,3 +101,7 @@
 - create ItemForm.js to add new Item
 - add new link in Navbar for adding new Item
 - update Routes in backend tools.js
+
+11/11 - create admin page
+- crate admin page
+- update routes 
