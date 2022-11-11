@@ -16,7 +16,8 @@ const Navbar = () => {
                 <Link to='/'><span className='flex'><h1 className='w-full text-3xl font-bold text-[#00df9a]'>Toolman</h1><AiOutlineTool size={30} color='#00df9a'/></span></Link>
                 <ul className='hidden md:flex'>
                     <Link to='/'><li className='p-4 hover:text-[#00df9a] transition-all'>Home</li></Link>
-                    <li className='p-4 hover:text-[#00df9a] transition-all duration-500'>Items</li>
+                    <Link to='/items'><li className='p-4 hover:text-[#00df9a] transition-all duration-500'>Items</li></Link>
+                    <Link to='/items/add'><li className='p-4 hover:text-[#00df9a] transition-all duration-500'>New Item</li></Link>
                     <li className='p-4 hover:text-[#00df9a] transition-all duration-500'>Workers</li>
                     <li className='p-4 hover:text-[#00df9a] transition-all duration-500'>About</li>
                     <button className="px-2 ml-4 bg-gray-500 hover:bg-[#00df9a] transition-all duration-500 text-white text-sm rounded-full">Login</button>
