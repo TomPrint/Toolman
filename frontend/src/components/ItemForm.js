@@ -38,40 +38,42 @@ const ItemForm = () => {
 
 
     return ( 
-        <form className="create" onSubmit={handleSubmit}>
-            <h3>Add a new Item</h3>
+        <div className="flex justify-between items-center h-30 max-w-[1240px] mx-auto px-4 text-white">
+        <form className="shadow-md rounded px-8 pt-6 pb-8 mb-4" onSubmit={handleSubmit}>
+            <h3 className="py-4">Add a new Item</h3>
             
-            <label>Item title: </label>
+            <label className="block text-gray-500 text-sm font-bold mb-2">Item title: </label>
             <input className="text-black"
             type="text"
             onChange={(e) => setTitle(e.target.value)}
             value={title}
              />
 
-            <label>Model: </label>
+            <label className="block text-gray-500 text-sm font-bold mb-2">Model: </label>
             <input className="text-black"
             type="text"
             onChange={(e) => setModel(e.target.value)}
             value={model}
              />
 
-            <label>Serial number: </label>
+            <label className="block text-gray-500 text-sm font-bold mb-2">Serial number: </label>
             <input className="text-black"
             type="text"
             onChange={(e) => setSerialNumber(e.target.value)}
             value={serialNumber}
              />
 
-            <label>Year of production: </label>
+            <label className="block text-gray-500 text-sm font-bold mb-2">Year of production: </label>
             <input className="text-black"
             type="text"
             onChange={(e) => setYearOfProduction(e.target.value)}
             value={yearOfProduction}
              />
 
-             <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"> Add Item</button>
+             <button className="block bg-[#00df9a]  text-white font-bold py-2 px-4 rounded my-5"> Add Item</button>
 
         </form>
+        </div>
      );
 }
  
