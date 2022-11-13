@@ -105,4 +105,10 @@
 11/11 - create admin page
 - create login page
 - crate admin page
-- update routes 
+- update routes
+
+14/11 - connect singup/login/logout api to FRONTEND
+- create hooks to handle fetch requests (useLogin, useSignup, useLogout)
+- create Login.js, Singup.js pages with forms
+- create redirect for login page in app.js
+- prepare for auth protection

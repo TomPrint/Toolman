@@ -1,4 +1,5 @@
 const express = require('express');
+const requireAuth = require ('../middleware/requireAuth')
 const { 
   createItem,
    getItems,
@@ -8,6 +9,8 @@ const {
    } = require('../controllers/itemController')
 
 const router = express.Router();
+// require authorization for all routes
+// router.use(requireAuth)
 
 
 // GET all items

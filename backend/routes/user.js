@@ -1,5 +1,4 @@
 const express = require('express')
-const {requireAuth} = require('../middleware/requireAuth')
 
 //! controller functions
 const { loginUser, signupUser, getUsers } = require('../controllers/userController')
@@ -11,7 +10,7 @@ const router = express.Router()
 router.post('/login', loginUser)
 
 //! signup route
-router.post('/signup', requireAuth, signupUser)
+router.post('/signup', signupUser)
 
 //! getAllUsers routes
 router.get('/userlist', getUsers)
