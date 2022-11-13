@@ -8,6 +8,8 @@ import Footer from "./components/Footer";
 import Signup from "./pages/Signup"
 import Items from "./pages/Items";
 import ItemForm from "./components/ItemForm";
+import WorkerForm from "./components/WorkerForm";
+import Workers from "./pages/Workers";
 import Login from "./pages/Login";
 import Admin from "./pages/Admin";
 
@@ -23,7 +25,9 @@ function App() {
             <Route path="/signup" element={<Signup />} />
             <Route path="/login" element={<Login />} />
             <Route path="/items" element={<Items />} />
+            <Route path="/workers" element={<Workers />} />
             <Route path="/items/add" element={<ItemForm />} />
+            <Route path="/workers/add" element={<WorkerForm />} />
           </Routes>
           <Footer />
         </div>
