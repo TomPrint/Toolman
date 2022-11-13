@@ -18,9 +18,10 @@ const Navbar = () => {
                     <Link to='/'><li className='p-4 hover:text-[#00df9a] transition-all'>Home</li></Link>
                     <Link to='/items'><li className='p-4 hover:text-[#00df9a] transition-all duration-500'>Items</li></Link>
                     <Link to='/items/add'><li className='p-4 hover:text-[#00df9a] transition-all duration-500'>New Item</li></Link>
-                    <li className='p-4 hover:text-[#00df9a] transition-all duration-500'>Workers</li>
+                    <Link to='/workers'><li className='p-4 hover:text-[#00df9a] transition-all duration-500'>Workers</li></Link>
+                    <Link to='/workers/add'><li className='p-4 hover:text-[#00df9a] transition-all duration-500'>New Worker</li></Link>
                     <Link to='/admin'><li className='p-4 hover:text-[#00df9a] transition-all duration-500'>Admin</li></Link>
-                    <button className="px-2 ml-4 bg-gray-500 hover:bg-[#00df9a] transition-all duration-500 text-white text-sm rounded-full">Log out</button>
+                    <button className="px-1 ml-4 bg-gray-500 hover:bg-[#00df9a] transition-all duration-500 text-white text-sm rounded-full">Log out</button>
                 </ul>
                 
                 {/* onClick change icon of menu depend on the state */}

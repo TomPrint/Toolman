@@ -6,6 +6,7 @@ const express = require("express");
 const mongoose = require("mongoose")
 const toolmanRoutes = require("./routes/tools");
 const userRoutes = require('./routes/user')
+const employeeRoutes = require('./routes/employee')
 
 // to start an express app
 const app = express();
@@ -28,6 +29,9 @@ app.use("/api/tools", toolmanRoutes);
 
 // user routes
 app.use('/api/user', userRoutes)
+
+// employee routes
+app.use('/api/employee', employeeRoutes)
 
 //! OTHER ACTIONS
 
