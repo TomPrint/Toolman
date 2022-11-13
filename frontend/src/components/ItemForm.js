@@ -38,40 +38,42 @@ const ItemForm = () => {
 
 
     return ( 
-        <form className="create" onSubmit={handleSubmit}>
-            <h3>Add a new Item</h3>
+        <div className="flex justify-center h-30 max-w-[1240px] mx-auto px-4 text-white">
+        <form className="w-3/4 md:w-1/2 shadow-md rounded px-2 pt-6 pb-3 mb-4" onSubmit={handleSubmit}>
+            <h3 className="py-4">Add a new Item</h3>
             
-            <label>Item title: </label>
-            <input className="text-black"
+            <label className="block text-gray-500 text-sm py-2">Item title: </label>
+            <input className="text-black w-[100%]"
             type="text"
             onChange={(e) => setTitle(e.target.value)}
             value={title}
              />
 
-            <label>Model: </label>
-            <input className="text-black"
+            <label className="block text-gray-500 text-sm py-2">Model: </label>
+            <input className="text-black w-[100%]"
             type="text"
             onChange={(e) => setModel(e.target.value)}
             value={model}
              />
 
-            <label>Serial number: </label>
-            <input className="text-black"
+            <label className="block text-gray-500 text-sm py-2">Serial number: </label>
+            <input className="text-black w-[100%]"
             type="text"
             onChange={(e) => setSerialNumber(e.target.value)}
             value={serialNumber}
              />
 
-            <label>Year of production: </label>
-            <input className="text-black"
+            <label className="block text-gray-500 text-sm py-2">Year of production: </label>
+            <input className="text-black w-[100%]"
             type="text"
             onChange={(e) => setYearOfProduction(e.target.value)}
             value={yearOfProduction}
              />
-
-             <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"> Add Item</button>
-
+            <div class="flex justify-center">
+             <button className="  bg-gray-500 hover:bg-[#00df9a] transition-all duration-500 text-white rounded py-2 px-5 m-8"> Add Item</button>
+            </div>
         </form>
+        </div>
      );
 }
  

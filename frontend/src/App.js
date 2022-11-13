@@ -8,6 +8,8 @@ import Footer from "./components/Footer";
 import Signup from "./pages/Signup"
 import Items from "./pages/Items";
 import ItemForm from "./components/ItemForm";
+import WorkerForm from "./components/WorkerForm";
+import Workers from "./pages/Workers";
 import Login from "./pages/Login";
 import Admin from "./pages/Admin";
 import { useAuthContext } from './hooks/useAuthContext'
@@ -28,6 +30,8 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/items" element={user ? <Items /> : <Navigate to="/login" />} />
             <Route path="/items/add" element={user ? <ItemForm /> : <Navigate to="/login" />} />
+            <Route path="/workers" element={user ? <Workers /> : <Navigate to="/login" />} />
+            <Route path="/workers/add" element={user ? <WorkerForm /> : <Navigate to="/login" />} />
           </Routes>
           <Footer />
         </div>
