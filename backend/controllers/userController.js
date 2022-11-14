@@ -48,8 +48,8 @@ const loginUser = async (req, res) => {
 const getUsers = async (req, res) => {
   //grab all users and sort descending by creation date
   try {
-  const user = await User.find({}).sort({createdAt:-1})
-  res.status(200).json(user)
+  const users = await User.find({}).sort({createdAt:-1})
+  res.status(200).json(users)
 } catch (error) {
   res.status(400).json({ error: error.message });
 }

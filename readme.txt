@@ -107,8 +107,14 @@
 - crate admin page
 - update routes
 
-14/11 - connect singup/login/logout api to FRONTEND
+14/11 - connect singup/login/logout api to frontend
 - create hooks to handle fetch requests (useLogin, useSignup, useLogout)
 - create Login.js, Singup.js pages with forms
 - create redirect for login page in app.js
 - prepare for auth protection
+
+15/11 - connect getUsers api to frontend
+- fetching all users from api to frontend
+- create ManageUser.js page and UserDetails.js component
+- "npm install react-icons --save" to get react icons
+- add style to UserDetails.js

@@ -13,7 +13,7 @@ router.post('/login', loginUser)
 router.post('/signup', signupUser)
 
 //! getAllUsers routes
-router.get('/userlist', getUsers)
+router.get('/users', getUsers)
 
 
 module.exports = router

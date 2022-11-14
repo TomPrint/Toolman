@@ -1,5 +1,5 @@
 const express = require('express');
-const requireAuth = require ('../middleware/requireAuth')
+const {requireAuth, adminAccess} = require ('../middleware/requireAuth')
 const { 
   createItem,
    getItems,
