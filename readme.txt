@@ -106,3 +106,13 @@
 - create login page
 - crate admin page
 - update routes 
+
+13/11 - create worker backend and frontend
+#BACKEND:
+- create employee route
+- add employee route to an app
+- create workerController and workerModel
+#FRONTEND:
+- create Worker.js page to show workers
+- create WorkerDetails to show workers in Worker.js
+- create WorkerForm to add new worker

@@ -23,8 +23,8 @@ const Workers = () => {
     <div className="flex justify-between items-center h-30 max-w-[1240px] mx-auto px-4 text-white">
       <div class="p-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-7">
           
-        {/* chcecking are there any item and if so map them */}
-        {/* using ItemDetails from components to show template */}
+        {/* chcecking are there any workers and if so map them */}
+        {/* using WorkerDetails from components to show template */}
         {workers && workers.map(worker => (
           <WorkerDetails key={worker._id} worker={worker}/>
         ))}
