@@ -123,3 +123,7 @@
 - create Login.js, Singup.js pages with forms
 - create redirect for login page in app.js
 - prepare for auth protection
+
+14/11 - 1st step to create db realtions betweend Items and Workers
+- updated ItemModel with atEmployee - ref to "Worker" model
+- update in frontend ItemDetails and WorkerDetails just to show connections above
