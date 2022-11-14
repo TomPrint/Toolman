@@ -8,6 +8,7 @@ const ItemDetails = ({item}) => {
         <p>Model : <span className="text-[#00df9a]">{item.model}</span></p>
         <p>Numer seryjny : <span className="text-[#00df9a]">{item.serialNumber}</span></p>
         <p>Rok produkcji : <span className="text-[#00df9a]">{item.yearOfProduction}</span></p>
+        <p>Pracownik : <span className="text-[#00df9a]">{item.atEmployee}</span></p>
         </div>
         </div>
      );
