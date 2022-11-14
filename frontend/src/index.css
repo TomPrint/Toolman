@@ -11,15 +11,10 @@ body {
   font-family: 'Comfortaa';
 }
 
-login{
-max-width: 400px;
-margin: 40px auto;
-padding: 20px;
-background: #fff;
-}
 
 
 
+/* coffe cup */
 #container {
   position: absolute;
   top: 50%;
@@ -117,3 +112,5 @@ background: #fff;
   margin-left: 6px;
   background-color: #7bb8d4;
 }
+
+/* end of coffe cup */
