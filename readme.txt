@@ -105,14 +105,10 @@
 11/11 - create admin page
 - create login page
 - crate admin page
-- update routes 
+- update routes
 
-13/11 - create worker backend and frontend
-#BACKEND:
-- create employee route
-- add employee route to an app
-- create workerController and workerModel
-#FRONTEND:
-- create Worker.js page to show workers
-- create WorkerDetails to show workers in Worker.js
-- create WorkerForm to add new worker
+14/11 - connect singup/login/logout api to FRONTEND
+- create hooks to handle fetch requests (useLogin, useSignup, useLogout)
+- create Login.js, Singup.js pages with forms
+- create redirect for login page in app.js
+- prepare for auth protection
