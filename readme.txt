@@ -107,6 +107,17 @@
 - crate admin page
 - update routes
 
+13/11 - crete worker backend and frontend
+#BACKEND:
+- create routes in employee.js
+- import this routes in server.js
+- create workerModel.js
+- create workerController.js
+#FRONTEND:
+- create Workers.js in pages 
+- create WorkerForm to create new worker
+- create WorkerDetail to show template in Workers.js
+
 14/11 - connect singup/login/logout api to FRONTEND
 - create hooks to handle fetch requests (useLogin, useSignup, useLogout)
 - create Login.js, Singup.js pages with forms
