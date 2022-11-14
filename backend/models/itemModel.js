@@ -32,9 +32,11 @@ const itemSchema = new Schema ({
         type: Date,
         required: false,
     },
+    //Linking Worker model to an Item
     atEmployee: {
-        type: String,
-        required: false,
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref:'Worker'
     }
 }, { timestamps: true })
 
