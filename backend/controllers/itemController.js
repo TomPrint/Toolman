@@ -1,14 +1,14 @@
 const Item = require('../models/itemModel')
+const Worker = require('../models/workerModel')
 const mongoose = require('mongoose')
 
 //! CREATE new item 
 const createItem = async (req, res) => {
   //destructuring form req.body
-  const {title, model, serialNumber, yearOfProduction } = req.body
-  
+  const {title, model, serialNumber, yearOfProduction, atEmployee} = req.body
   //try-catch to create new Item and catch error. Add "await" because of "async" - Js promise above
   try {
-    const item = await Item.create({title, model, serialNumber, yearOfProduction })
+    const item = await Item.create({title, model, serialNumber, yearOfProduction, atEmployee})
     res.status(200).json(item)
   } catch(error) {
     res.status(400).json({error: error.message})
