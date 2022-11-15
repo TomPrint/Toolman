@@ -107,7 +107,6 @@
 - crate admin page
 - update routes
 
-14/11 - connect singup/login/logout api to frontend
 13/11 - crete worker backend and frontend
 #BACKEND:
 - create routes in employee.js
@@ -119,17 +118,24 @@
 - create WorkerForm to create new worker
 - create WorkerDetail to show template in Workers.js
 
+14/11 - connect singup/login/logout api to frontend
+
 14/11 - connect singup/login/logout api to FRONTEND
 - create hooks to handle fetch requests (useLogin, useSignup, useLogout)
 - create Login.js, Singup.js pages with forms
 - create redirect for login page in app.js
 - prepare for auth protection
 
+14/11 - 1st step to create db realtions between Items and Workers
+- updated ItemModel with atEmployee - ref to "Worker" model
+- update in frontend ItemDetails and WorkerDetails just to show connections above
+
 15/11 - connect getUsers api to frontend
 - fetching all users from api to frontend
 - create ManageUser.js page and UserDetails.js component
 - "npm install react-icons --save" to get react icons
 - add style to UserDetails.js
-14/11 - 1st step to create db realtions betweend Items and Workers
-- updated ItemModel with atEmployee - ref to "Worker" model
-- update in frontend ItemDetails and WorkerDetails just to show connections above
+
+15/11 - 2nd step to create db realations between Items and Workers
+- populate the query for showing all Items relation to employee
+- update ItemDetails to show Item.atEmployee.name in Item page

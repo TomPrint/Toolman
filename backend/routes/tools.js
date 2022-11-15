@@ -8,14 +8,17 @@ const {
    updateItem
    } = require('../controllers/itemController')
 
+const { getWorkers } = require('../controllers/workerController')
+
 const router = express.Router();
 // require authorization for all routes
 // router.use(requireAuth)
 
 
 // GET all items
-router.get("/", getItems)
-router.get("/items", getItems)
+router.get("/", getItems, getWorkers)
+router.get("/items", getItems, getWorkers)
+
 
 // GET a single item
 router.get("/:id", getItem)
