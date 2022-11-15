@@ -139,3 +139,10 @@
 15/11 - 2nd step to create db realations between Items and Workers
 - populate the query for showing all Items relation to employee
 - update ItemDetails to show Item.atEmployee.name in Item page
+
+15/11 - styling update
+- change the default images for item and worker
+
+15/11 - 3rd step to create db ralatios between Items and Workers
+- update workerControler with new function getWorkerItems to show all items that belongs to worker
+- update employee routes with above function
