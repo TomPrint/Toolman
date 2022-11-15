@@ -3,8 +3,10 @@ const {
    createWorker,
    getWorkers,
    getWorker,
+   getWorkerItems,
    deleteWorker,
-   updateWorker
+   updateWorker,
+
    } = require("../controllers/workerController")
 
 const router = express.Router();
@@ -17,6 +19,9 @@ router.get("/workers", getWorkers)
 
 // GET a single worker
 router.get("/:id", getWorker)
+
+//GET a single worker all items
+router.get("/:id/items", getWorkerItems)
 
 // POST a new worker
 router.post("/", createWorker)
