@@ -14,6 +14,7 @@ const router = express.Router();
 router.get("/", getWorkers)
 router.get("/workers", getWorkers)
 
+
 // GET a single worker
 router.get("/:id", getWorker)
 
