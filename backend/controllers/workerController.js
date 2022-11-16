@@ -1,10 +1,11 @@
 const Worker = require('../models/workerModel')
+const Item = require('../models/itemModel')
 const mongoose = require('mongoose')
 
 //! CREATE new item 
 const createWorker = async (req, res) => {
   //destructuring form req.body
-  const {name} = req.body
+  const {name} = req.body 
   
   //try-catch to create new Item and catch error. Add "await" because of "async" - Js promise above
   try {
@@ -41,7 +42,16 @@ const getWorker = async (req, res) => {
   //if item is present, response ok status
   res.status(200).json(worker)
 }
+//! GET a single worker all items // need to add error check later here
+const getWorkerItems = async (req, res) => {
+  const { id } = req.params;
+  const worker = await Worker.findById(id) 
+  const items = await Item.find({atEmployee:id})
 
+  console.log(items)
+  res.status(200).json(items)
+  }
+  
 // DELETE item
 
 const deleteWorker = async (req,res) => {
@@ -94,4 +104,5 @@ module.exports = {
     getWorkers,
     deleteWorker,
     updateWorker,
+    getWorkerItems
 }
