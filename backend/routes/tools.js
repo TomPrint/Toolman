@@ -16,15 +16,12 @@ const router = express.Router();
 
 
 // GET all items
-router.get("/", getItems, getWorkers)
 router.get("/items", getItems, getWorkers)
-
 
 // GET a single item
 router.get("/:id", getItem)
 
 // POST a new item
-router.post("/", createItem)
 router.post("/items/add", createItem)
 
 // DELETE a item

@@ -8,7 +8,7 @@ const Items = () => {
 
   useEffect(() => {
     const fetchItems = async () => {
-      const response = await fetch('/api/tools')
+      const response = await fetch('/api/tools/items')
       const json = await response.json()
       // to get an array of objet
       if (response.ok) {

@@ -8,7 +8,7 @@ const Workers = () => {
 
   useEffect(() => {
     const fetchWorkers = async () => {
-      const response = await fetch('/api/employee')
+      const response = await fetch('/api/employee/workers')
       const json = await response.json()
       // to get an array of objet
       if (response.ok) {

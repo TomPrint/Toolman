@@ -13,15 +13,13 @@ const router = express.Router();
 
 
 // GET all workers
-router.get("/", getWorkers)
 router.get("/workers", getWorkers)
-
 
 // GET a single worker
 router.get("/:id", getWorker)
 
 //GET a single worker all items
-router.get("/:id/items", getWorkerItems)
+router.get("/workers/:id/items", getWorkerItems)
 
 // POST a new worker
 router.post("/", createWorker)
