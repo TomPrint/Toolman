@@ -9,7 +9,9 @@ const ItemDetails = ({item}) => {
         <p>S/N : <span className="text-[#00df9a]">{item.serialNumber}</span></p>
         <p>Rok produkcji : <span className="text-[#00df9a]">{item.yearOfProduction}</span></p>
         {/* Use in backend .populate('atEmployee') to show item.atEmployee.name - realation between worker and employee */}
-        <p>Pracownik : <span className="text-[#00df9a]">{item.atEmployee.name}</span></p>
+        {/* use logic to check if worker was added to an item */}
+        {item.atEmployee && <p>Pracownik : <span className="text-[#00df9a]">{item.atEmployee.name}</span></p>}
+        {!item.atEmployee && <p>Pracownik : <span className="text-[#AB1F1C]">BRAK</span></p>}
         </div>
         </div>
      );

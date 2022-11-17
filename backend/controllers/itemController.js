@@ -20,6 +20,7 @@ const createItem = async (req, res) => {
 const getItems = async (req, res) => {
   //grab all items and sorted descending with created date
   const items = await Item.find({}).populate('atEmployee')
+ 
   res.status(200).json(items)
 }
 

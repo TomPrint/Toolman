@@ -146,3 +146,9 @@
 15/11 - 3rd step to create db ralatios between Items and Workers
 - update workerControler with new function getWorkerItems to show all items that belongs to worker
 - update employee routes with above function
+
+17/11 - routes and itemDetail fix
+- update correct routes in tools.js and employee.js
+- update paths in fetch in Worker, WorkerForm, Item, ItemForm
+- add logic in itemDetail to show items that were not assign to a worker
+- display information that item is not assign
