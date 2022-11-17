@@ -22,7 +22,6 @@ router.get("/:id", getWorker)
 router.get("/workers/:id/items", getWorkerItems)
 
 // POST a new worker
-router.post("/", createWorker)
 router.post("/workers/add", createWorker)
 
 // // DELETE a worker

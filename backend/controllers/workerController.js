@@ -46,10 +46,9 @@ const getWorker = async (req, res) => {
 const getWorkerItems = async (req, res) => {
   const { id } = req.params;
   const worker = await Worker.findById(id) 
-  const items = await Item.find({atEmployee:id})
-
-  console.log(items)
-  res.status(200).json(items)
+  const workerItems = await Item.find({atEmployee:id})
+  console.log(workerItems)
+  res.status(200).json(workerItems)
   }
   
 // DELETE item
