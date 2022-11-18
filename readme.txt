@@ -152,3 +152,10 @@
 - update paths in fetch in Worker, WorkerForm, Item, ItemForm
 - add logic in itemDetail to show items that were not assign to a worker
 - display information that item is not assign
+
+18/11 - 4th step to create db realations between Items and Workers
+- update employee routes in backend
+- fix a query name in workerController.js in backend
+- update WorkerDetail.js with link that shows all items asign to worker (passing id)
+- create WorkerItems with useParams to deliver ID 
+- create new path in app.js in frontend

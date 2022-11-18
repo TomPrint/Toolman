@@ -14,6 +14,7 @@ import Login from "./pages/Login";
 import Admin from "./pages/Admin";
 import ManageUser from "./pages/ManageUser";
 import { useAuthContext } from './hooks/useAuthContext'
+import WorkerItems from "./pages/WorkerItems";
 
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
             <Route path="/items/add" element={user ? <ItemForm /> : <Navigate to="/login" />} />
             <Route path="/workers" element={user ? <Workers /> : <Navigate to="/login" />} />
             <Route path="/workers/add" element={user ? <WorkerForm /> : <Navigate to="/login" />} />
+            <Route path="/workers/:workerId/items" element={user ? <WorkerItems /> : <Navigate to="/login" />} />
             <Route path="/manage" element={user ? <ManageUser /> : <Navigate to="/login" />} />
           </Routes>
           <Footer />
