@@ -55,5 +55,26 @@ const getUsers = async (req, res) => {
 }
 }
 
+// ! DELETE a user
 
-module.exports = { signupUser, loginUser, getUsers };
+const deleteUser = async (req,res) => {
+  //grab id from req.params
+  const { id } = req.params 
+  //check if id is valid type of mongoose id. If not res error.
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(404).json({error: 'No such user'})
+  }
+  //in mongoose id = _id. So function - finds and delete the user that _id is id that we took from req.params
+  const user = await User.findOneAndDelete({_id: id })
+
+  // if no user - res error
+  if (!user) {
+    return res.status(404).json({error: 'No such user'})
+  }
+  //if item is present, response ok status
+  res.status(200).json(user)
+
+}
+
+
+module.exports = { signupUser, loginUser, getUsers, deleteUser };
