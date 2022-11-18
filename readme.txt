@@ -159,3 +159,5 @@
 - update WorkerDetail.js with link that shows all items asign to worker (passing id)
 - create WorkerItems with useParams to deliver ID 
 - create new path in app.js in frontend
+
+19/11 - displaying data in table in WorkerItems.js
