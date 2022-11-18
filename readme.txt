@@ -161,3 +161,7 @@
 - create new path in app.js in frontend
 
 19/11 - displaying data in table in WorkerItems.js
+
+19/11 - create delete route and frontend connections
+- create delete route and logic in userController
+- setup inital frontend connection
