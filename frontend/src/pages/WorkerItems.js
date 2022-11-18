@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 
-
+// components
+import WorkerItemDetails from "../components/WorkerItemDetails"
 
 const WorkerItems = () => {
   
@@ -28,10 +29,27 @@ const WorkerItems = () => {
   return (
     <div className="flex justify-between items-center h-30 max-w-[1240px] mx-auto px-4 text-white">
       <div className="p-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-7">
-      {workerItems && workerItems.map(workeritem => (
-          <p key={workeritem._id} workeritem={workeritem}>{workeritem.title} / {workeritem.model}</p>
-          
+      <table class="table-auto p-4">
+            <thead>
+                <tr>
+                <th c>Nazwa:</th>
+                <th>Model</th>
+                <th>S/N</th>
+                <th>Rok produkcji</th>
+                </tr>
+            </thead>
+            <tbody>
+      {workerItems && workerItems.map((workeritem, workerId) => (
+                <tr key={workerId}>
+                  <td>{workeritem.title}</td>
+                  <td>{workeritem.model}</td>
+                  <td>{workeritem.serialNumber}</td>
+                  <td>{workeritem.yearOfProduction}</td>
+                </tr>
+            
         ))}
+         </tbody>
+            </table>
       </div>
     </div>
   )
