@@ -18,10 +18,11 @@ const Admin = () => {
             <Link to="#">Users' Log</Link>
           </button>
 
+
           {/* coffe cup */}
           <br></br>
           <div className="invisible md:visible mt-11" id="container">
-            <div class="steam" id="steam1">
+            <div className="steam" id="steam1">
               {" "}
             </div>
             <div className="steam" id="steam2">
