@@ -165,3 +165,5 @@
 19/11 - create delete route and frontend connections
 - create delete route and logic in userController
 - setup inital frontend connection
+- displaying data in table
+- styling table view 

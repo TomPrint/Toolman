@@ -45,8 +45,16 @@ const getWorker = async (req, res) => {
 //! GET a single worker all items // need to add error check later here
 const getWorkerItems = async (req, res) => {
   const { id } = req.params;
+  
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(404).json({error: 'No such worker'})
+  }
   const worker = await Worker.findById(id) 
+  if (!worker) {
+    return res.status(404).json({error: 'No such worker'})
+  }
   const workerItems = await Item.find({atEmployee:id})
+  
   console.log(workerItems)
   res.status(200).json(workerItems)
   }

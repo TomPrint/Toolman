@@ -1,11 +1,19 @@
 import { FaUserCircle, FaTrash } from "react-icons/fa";
 import { useState } from "react";
+import { useAuthContext } from '../hooks/useAuthContext'
 
 const UserDetails = ({ user }) => {
   const [msg, setMsg] = useState(null);
+  const { dispatch } = useAuthContext()
+
 
   const handleClick = async () => {
       setMsg(null);
+
+      if (!user){
+        return
+      }
+
       const response = await fetch(`/api/user/${user._id}`, {
         method: "DELETE",
         headers: {
@@ -16,8 +24,10 @@ const UserDetails = ({ user }) => {
       
       const json = await response.json();
 
-      console.log(json);
+      if (response.ok) {
+      dispatch ({type: 'DELETE_USER', payload: json})
       setMsg("Delete Completed");
+    }
   };
 
   return (
