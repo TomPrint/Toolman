@@ -1,9 +1,6 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 
-// components
-import WorkerItemDetails from "../components/WorkerItemDetails"
-
 const WorkerItems = () => {
   
   //pass workerId parameter from App.js form Route (must be the same name of id param)
@@ -27,29 +24,28 @@ const WorkerItems = () => {
   }, [workerId])
 
   return (
-    <div className="flex justify-between items-center h-30 max-w-[1240px] mx-auto px-4 text-white">
-      <div className="p-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-7">
-      <table class="table-auto p-4">
-            <thead>
+    <div className="flex justify-center h-30 max-w-[1240px] mx-auto px-4 text-white py-10">
+      <div className="w-3/4 md:w-1/1">  
+        <table class="min-w-full border text-center p-4">
+            <thead className="border-b p-4 bg-[#00df9a] text-xl">
                 <tr>
-                <th c>Nazwa:</th>
+                <th>Nazwa:</th>
                 <th>Model</th>
-                <th>S/N</th>
-                <th>Rok produkcji</th>
+                <th className="border hidden sm:table-cell">S/N</th>
+                <th className="border hidden sm:table-cell">Rok produkcji</th>
                 </tr>
             </thead>
             <tbody>
-      {workerItems && workerItems.map((workeritem, workerId) => (
-                <tr key={workerId}>
-                  <td>{workeritem.title}</td>
-                  <td>{workeritem.model}</td>
-                  <td>{workeritem.serialNumber}</td>
-                  <td>{workeritem.yearOfProduction}</td>
-                </tr>
-            
-        ))}
-         </tbody>
-            </table>
+            {workerItems && workerItems.map((workeritem, workerId) => (
+              <tr key={workerId}>
+                <td className="border">{workeritem.title}</td>
+                <td className="border">{workeritem.model}</td>
+                <td className="border hidden sm:table-cell">{workeritem.serialNumber}</td>
+                <td className="border hidden sm:table-cell">{workeritem.yearOfProduction}</td>
+              </tr> 
+            ))}
+            </tbody>
+        </table>
       </div>
     </div>
   )
