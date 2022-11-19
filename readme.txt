@@ -161,3 +161,5 @@
 - create new path in app.js in frontend
 
 19/11 - displaying data in table in WorkerItems.js
+- displaying data in table
+- styling table view 
