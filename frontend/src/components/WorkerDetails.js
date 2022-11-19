@@ -1,4 +1,6 @@
 import { Link } from 'react-router-dom'
+import {format} from 'date-fns'
+
 
 const WorkerDetails = ({worker}) => {
     return ( 
@@ -7,7 +9,8 @@ const WorkerDetails = ({worker}) => {
         <img className="w-full rounded" src="Worker_no_image.webp" alt="Mountain"></img>
         <div className="px-3 py-2">
         <div className="font-bold text-xl mb-2">{worker.name}</div>
-        <p className="font-bold text-xs mb-2">{worker._id}</p>
+        <p className="font-bold text-xs mb-2">Stanowisko: {worker.position}</p>
+        <p className="font-bold text-xs mb-2">Utworzono: {format(new Date(worker.createdAt),'dd/MM/yyyy')}</p>
         
         {/* Link that show all items asign to a worker */}
         

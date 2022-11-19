@@ -163,3 +163,8 @@
 19/11 - displaying data in table in WorkerItems.js
 - displaying data in table
 - styling table view 
+
+19/11 - small changes related to Worker
+- add new fields to Worker model & update Controller, model, form
+- "npm install date-fns" do format date in template (date fron timestamp in model)
+- prepare select in item form to chose a Worker while creating an item

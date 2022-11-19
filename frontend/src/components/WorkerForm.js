@@ -2,12 +2,13 @@ import { useState } from "react";
 
 const WorkerForm = () => {
     const [name, setName] = useState('')
+    const [position, setPosition] = useState('')
     const [error, setError] = useState(null)
     
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        const worker = {name}
+        const worker = {name, position}
 
         const response = await fetch ('/api/employee/workers/add', {
             method: 'POST',
@@ -25,7 +26,7 @@ const WorkerForm = () => {
 
         if (response.ok) {
             setName('')
-            
+            setPosition('')
             setError(null)
             console.log('new worker added', json)
         }
@@ -37,11 +38,18 @@ const WorkerForm = () => {
         <form className="w-3/4 md:w-1/2 shadow-md rounded px-2 pt-6 pb-3 mb-4" onSubmit={handleSubmit}>
             <h3 className="py-4">Add a new Worker</h3>
             
-            <label className="block text-gray-500 text-sm py-2">Worker name: </label>
+            <label className="block text-gray-500 text-sm py-2">Imię i Nazwisko: </label>
             <input className="text-black w-[100%]"
             type="text"
             onChange={(e) => setName(e.target.value)}
             value={name}
+             />
+
+            <label className="block text-gray-500 text-sm py-2">Stanowisko: </label>
+            <input className="text-black w-[100%]"
+            type="text"
+            onChange={(e) => setPosition(e.target.value)}
+            value={position}
              />
 
             <div class="flex justify-center">

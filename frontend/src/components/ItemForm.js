@@ -7,6 +7,11 @@ const ItemForm = () => {
     const [yearOfProduction, setYearOfProduction] = useState('')
     const [error, setError] = useState(null)
     
+    const handleChange = () => {
+
+    }
+
+
     const handleSubmit = async (e) => {
         e.preventDefault()
 
@@ -69,6 +74,17 @@ const ItemForm = () => {
             onChange={(e) => setYearOfProduction(e.target.value)}
             value={yearOfProduction}
              />
+
+            <label className="block text-gray-500 text-sm py-2">At Employee: </label>
+                <select className="text-black w-[100%]"
+                value=''
+                onChange={handleChange}
+                > 
+                    <option value=''>-- Choose --</option>
+                    <option value=''>Worker 1</option>  
+                    <option value=''>Worker 2</option>
+             </select>
+
             <div class="flex justify-center">
              <button className="  bg-gray-500 hover:bg-[#00df9a] transition-all duration-500 text-white rounded py-2 px-5 m-8"> Add Item</button>
             </div>

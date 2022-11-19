@@ -7,6 +7,10 @@ const workerSchema = new Schema ({
     name: {
         type: String,
         required: true,
+    },
+    position: {
+        type: String,
+        require: false,
     }
 }, { timestamps: true })
 
