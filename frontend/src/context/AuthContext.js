@@ -10,6 +10,11 @@ export const authReducer = (state, action) => {
       return { user: action.payload }
     case 'LOGOUT':
       return { user: null }
+
+    case 'DELETE_USER':
+      return {...state, user: state.user.filter(u =>
+         u.id !== action.payload
+      )}    
     default:
       return state
   }
@@ -26,9 +31,14 @@ export const AuthContextProvider = ({ children }) => {
     if (user) {
       dispatch({ type: 'LOGIN', payload: user }) 
     }
+
+
   }, [])
 
+  
   console.log('AuthContext state:', state)
+
+  
   
   return (
     <AuthContext.Provider value={{ ...state, dispatch }}>
