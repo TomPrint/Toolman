@@ -1,22 +1,34 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-const ItemForm = () => {
+function ItemForm() {
+
     const [title, setTitle] = useState('')
     const [model, setModel] = useState('')
     const [serialNumber, setSerialNumber] = useState('')
     const [yearOfProduction, setYearOfProduction] = useState('')
+    const [workersList, setWorkersList] = useState([])
+    const [atEmployee, setAtEmployee] = useState(null)
     const [error, setError] = useState(null)
     
-    const handleChange = () => {
+    useEffect(()=>{
+        const fetchWorkers = async () =>{
+            const response = await fetch('/api/employee/workers')
+            const newData = response.json()
+            setWorkersList(await newData)
+            console.log('dane pracowników', newData)
+    };
+    fetchWorkers();
+    },[])
 
-    }
+    // const handleChange = (event) => {
+    //     const getWorkerId = event.target.value
+    //     console.log(getWorkerId)
+    // }
 
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-
-        const item = {title, model, serialNumber, yearOfProduction}
-
+        const item = {title, model, serialNumber, yearOfProduction, atEmployee}
         const response = await fetch ('/api/tools/items/add', {
             method: 'POST',
             body: JSON.stringify(item),
@@ -24,13 +36,11 @@ const ItemForm = () => {
                 'Content-Type':'application/json'
             }
         })
-        // we get back response as json and storing it it json
+        // we get back response as json and storing it in json
         const json = await response.json()
-
         if (!response.ok) {
             setError(json.error)
         }
-
         if (response.ok) {
             setModel('')
             setTitle('')
@@ -76,16 +86,15 @@ const ItemForm = () => {
              />
 
             <label className="block text-gray-500 text-sm py-2">At Employee: </label>
-                <select className="text-black w-[100%]"
-                value=''
-                onChange={handleChange}
-                > 
-                    <option value=''>-- Choose --</option>
-                    <option value=''>Worker 1</option>  
-                    <option value=''>Worker 2</option>
-             </select>
+            <select className="text-black w-[100%]"> 
+            {workersList.map(worker => (
+                 <option key={worker._id} value={worker._id}> {worker.name}</option>
+            ))
+             }  
+            {console.log('Pracownicy', workersList)}
+            </select>
 
-            <div class="flex justify-center">
+            <div className="flex justify-center">
              <button className="  bg-gray-500 hover:bg-[#00df9a] transition-all duration-500 text-white rounded py-2 px-5 m-8"> Add Item</button>
             </div>
         </form>

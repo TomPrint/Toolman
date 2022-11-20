@@ -172,3 +172,7 @@
 - add new fields to Worker model & update Controller, model, form
 - "npm install date-fns" do format date in template (date fron timestamp in model)
 - prepare select in item form to chose a Worker while creating an item
+
+20/11 - 5th step to create db realations between Items and Workers - add New Item with Worker name on select field
+- update tools.js route to pass getWorker function to create new Item view
+- update ItemForm.js to show Workers name in select field

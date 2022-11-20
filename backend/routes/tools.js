@@ -22,7 +22,7 @@ router.get("/items", getItems, getWorkers)
 router.get("/:id", getItem)
 
 // POST a new item
-router.post("/items/add", createItem)
+router.post("/items/add", createItem, getWorkers)
 
 // DELETE a item
 router.delete("/:id", deleteItem)
