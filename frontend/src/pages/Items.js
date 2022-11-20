@@ -20,15 +20,17 @@ const Items = () => {
   }, [])
 
   return (
+    <div>
+      <h1 className="flex justify-center py-2 text-xl">Wszystkie narzędzia na stanie: </h1>
     <div className="flex justify-between items-center h-30 max-w-[1240px] mx-auto px-4 text-white">
-      <div class="p-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-7">
-          
+      <div class="p-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-7">
         {/* chcecking are there any item and if so map them */}
         {/* using ItemDetails from components to show template */}
         {items && items.map(item => (
           <ItemDetails key={item._id} item={item}/>
         ))}
       </div>
+    </div>
     </div>
   )
 }

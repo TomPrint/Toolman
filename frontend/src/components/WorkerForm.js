@@ -36,7 +36,7 @@ const WorkerForm = () => {
     return ( 
         <div className="flex justify-center h-30 max-w-[1240px] mx-auto px-4 text-white">
         <form className="w-3/4 md:w-1/2 shadow-md rounded px-2 pt-6 pb-3 mb-4" onSubmit={handleSubmit}>
-            <h3 className="py-4">Add a new Worker</h3>
+            <h3 className="py-4 text-xl">Dodaj nowego pracownika:</h3>
             
             <label className="block text-gray-500 text-sm py-2">Imię i Nazwisko: </label>
             <input className="text-black w-[100%]"
@@ -53,7 +53,7 @@ const WorkerForm = () => {
              />
 
             <div class="flex justify-center">
-             <button className="bg-gray-500 hover:bg-[#00df9a] transition-all duration-500 text-white rounded py-2 px-5 m-8"> Add Worker</button>
+             <button className="bg-gray-500 hover:bg-[#00df9a] transition-all duration-500 text-white rounded py-2 px-5 m-8"> Dodaj pracownika</button>
             </div>
         </form>
         </div>
