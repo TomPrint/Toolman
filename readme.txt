@@ -167,3 +167,22 @@
 - setup inital frontend connection
 - displaying data in table
 - styling table view 
+
+19/11 - small changes related to Worker
+- add new fields to Worker model & update Controller, model, form
+- "npm install date-fns" do format date in template (date fron timestamp in model)
+- prepare select in item form to chose a Worker while creating an item
+
+20/11 - 5th step to create db realations between Items and Workers - add New Item with Worker name on select field
+- update tools.js route to pass getWorker function to create new Item view
+- update ItemForm.js to show Workers name in select field
+
+20/11 - final step - chose worker from select dropbox while creating an item 
+- update ItemForm.js to chose worker form select dropbox while createing an item
+- changes PL descirptions in all views
+- add sort by ttle in GET ALL Items
+- update styling in itemsDetails.js
+- update styling in itemForm.js
+- change Navbar description na styling
+- update styling in WorkerDetails.js
+- 

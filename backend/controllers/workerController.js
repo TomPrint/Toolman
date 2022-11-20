@@ -5,11 +5,11 @@ const mongoose = require('mongoose')
 //! CREATE new item 
 const createWorker = async (req, res) => {
   //destructuring form req.body
-  const {name} = req.body 
+  const {name, position} = req.body 
   
   //try-catch to create new Item and catch error. Add "await" because of "async" - Js promise above
   try {
-    const worker = await Worker.create({name})
+    const worker = await Worker.create({name, position})
     res.status(200).json(worker)
   } catch(error) {
     res.status(400).json({error: error.message})
@@ -42,7 +42,9 @@ const getWorker = async (req, res) => {
   //if item is present, response ok status
   res.status(200).json(worker)
 }
+
 //! GET a single worker all items // need to add error check later here
+
 const getWorkerItems = async (req, res) => {
   const { id } = req.params;
   
