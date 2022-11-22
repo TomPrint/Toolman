@@ -1,36 +1,49 @@
 import { useEffect, useState } from "react";
-// component
-import UserDetails from "../components/UserDetails";
+import { useAuthContext } from "../hooks/useAuthContext";
 
-const ManageUser = () => {
-  const [users, setUsers] = useState(null);
+function ManageUser() {
+  const [users, setUser] = useState([]);
 
   useEffect(() => {
-    const fetchUsers = async () => {
-      const response = await fetch('/api/user/users');
-      const json = await response.json();
-      // to get an array of objet
-      if (response.ok) {
-        setUsers(json);
-      }
-    };
-    // fire a function
-    fetchUsers();
+    getData();
   }, []);
+  async function deleteOperation(user) {
+    let result = await fetch(`/api/user/${user._id}`, {
+      method: "DELETE",
+    });
+    result = await result.json();
+    console.warn(result);
+    getData();
+  }
 
+  async function getData() {
+    let result = await fetch("/api/user/users");
+    result = await result.json();
+    setUser(result);
+  }
 
   return (
-    <div className="flex justify-between items-center h-30 max-w-[1240px] mx-auto px-4 text-white">
-      <div className="p-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-7">
-          
-        {/* chcecking are there any users and if so map them */}
-        {/* using UserDetails from components to show template */}
-        {users && users.map(user => (
-          <UserDetails key={user._id} user={user}/>
+    <div>
+      <tbody>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Admin</th>
+          <th>Delete</th>
+        </tr>
+        {users.map((user) => (
+          <tr key={user._id} user={user}>
+            <td>{user.name}</td>
+            <td>{user.email}</td>
+            <td>{user.isAdmin ? "Yes" : "No"}</td>
+            <td>
+              <button onClick={() => deleteOperation(user._id)}>Delete</button>
+            </td>
+          </tr>
         ))}
-      </div>
+      </tbody>
     </div>
-  )
+  );
 }
 
 export default ManageUser;
