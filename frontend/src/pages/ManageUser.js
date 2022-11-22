@@ -7,8 +7,8 @@ function ManageUser() {
   useEffect(() => {
     getData();
   }, []);
-  async function deleteOperation(user) {
-    let result = await fetch(`/api/user/${user._id}`, {
+  async function deleteOperation(_id) {
+    let result = await fetch(`/api/user/${_id}`, {
       method: "DELETE",
     });
     result = await result.json();
