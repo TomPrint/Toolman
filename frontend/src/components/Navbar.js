@@ -30,7 +30,7 @@ const Navbar = () => {
                     <Link to='/workers/add'><li className='p-4 hover:text-[#00df9a] transition-all duration-500'><span className='flex'><AiOutlinePlusCircle size={20}/>Pracownik</span></li></Link>
                     <Link to='/admin'><li className='p-4 hover:text-[#00df9a] transition-all duration-500'>Admin</li></Link>
                     {user &&(
-                    <button onClick = {handleLogoutClick} className="px-1 ml-4 bg-gray-500 hover:bg-[#00df9a] transition-all duration-500 text-white text-sm rounded-full">Log out <span className="text-xs">{user.email}</span></button>)}
+                    <button onClick = {handleLogoutClick} className="px-1 ml-4 bg-gray-500 hover:bg-[#00df9a] transition-all duration-500 text-white text-sm rounded-full">Log out <span className="text-xs"></span></button>)}
                      {!user && (<div></div>)}
                 </ul>
                 
@@ -47,7 +47,7 @@ const Navbar = () => {
                         <li className='p-4 border-b border-gray-500'>Admin</li>
                         <li className='p-4 border-b border-gray-500'>
                         {user &&(
-                    <button onClick = {handleLogoutClick} className="px-2 ml-4 bg-gray-500 hover:bg-[#00df9a] transition-all duration-500 text-white text-sm rounded-full">Log out <span className="text-xs">{user.email}</span></button>)}
+                    <button onClick = {handleLogoutClick} className="px-2 ml-4 bg-gray-500 hover:bg-[#00df9a] transition-all duration-500 text-white text-sm rounded-full">Log out <span className="text-xs">{user.name}</span></button>)}
                      {!user && (<div></div>)}
                     </li>
                         

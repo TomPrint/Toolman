@@ -194,3 +194,8 @@
 
 23/11 - new item form - error&sucess messages
 - update ItemControler.js and itemForm to show error or sucess messages
+
+23/11 - styling homepage and ManageUser page
+- show user.email at homepage
+- style ManageUser page to work on mobile devices
+- lesser css changes

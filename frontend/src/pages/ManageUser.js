@@ -28,7 +28,7 @@ function ManageUser() {
 <div className=" overflow-x-auto relative shadow-md sm:rounded-lg">
     <table className="w-full text-sm text-center text-white">
         <caption className="p-5 text-lg font-semibold text-center text-white bg-rgba(6, 18, 36, 0.945) dark:text-white">
-           Panel Admin
+           Użytkownicy
             <p className="mt-1 text-sm font-normal text-white">Zarządzaj Użytkownikami</p>
         </caption>
         <thead className="text-xs text-white uppercase bg-rgba(6, 18, 36, 0.945)">
@@ -36,7 +36,7 @@ function ManageUser() {
                 <th scope="col" className="py-3 px-6">
                     Nazwa
                 </th>
-                <th scope="col" className="py-3 px-6 ">
+                <th scope="col" className="py-3 px-6 hidden sm:table-cell">
                     Email
                 </th>
                 <th scope="col" className="py-3 px-6">
@@ -54,7 +54,7 @@ function ManageUser() {
                 <th scope="row" className="py-4 px-6 font-medium text-white whitespace-nowrap">
                 {user.name}
                 </th>
-                <td className="py-4 px-6">
+                <td className="py-4 px-6 hidden sm:table-cell">
                 {user.email}
                 </td>
                 <td className="py-4 px-6">
@@ -62,7 +62,7 @@ function ManageUser() {
                 </td>
 
                 <td className="py-4 px-6 text-right">
-                <button className="bg-red-500 hover:bg-[#00df9a]  text-white font-semibold py-2 px-4 border border-white rounded shadow" onClick={() => deleteOperation(user._id)}>Usuń</button>
+                <button className="bg-red-500 hover:bg-[#00df9a]  text-white font-semibold py-2 px-4 border border-zinc-900 rounded shadow" onClick={() => deleteOperation(user._id)}>Usuń</button>
                 </td>
             </tr>
             ))}
