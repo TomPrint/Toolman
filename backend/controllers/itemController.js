@@ -6,6 +6,11 @@ const mongoose = require('mongoose')
 const createItem = async (req, res) => {
   //destructuring form req.body
   const {title, model, serialNumber, yearOfProduction, atEmployee} = req.body
+
+  if (!title){
+    return res.status(400).json({error:'Błąd! Wymagane jest podanie chociaż nazwy narzędzia.'})
+  }
+
   //try-catch to create new Item and catch error. Add "await" because of "async" - Js promise above
   try {
     const item = await Item.create({title, model, serialNumber, yearOfProduction, atEmployee})
@@ -13,6 +18,7 @@ const createItem = async (req, res) => {
   } catch(error) {
     res.status(400).json({error: error.message})
   }
+ 
 }
 
 //! GET all items
