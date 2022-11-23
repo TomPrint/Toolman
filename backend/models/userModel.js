@@ -36,25 +36,25 @@ const userSchema = new mongoose.Schema(
 userSchema.statics.signup = async function (name, email, password, isAdmin) {
   // fields validation for signup
   if (!email || !password || !name || !isAdmin) {
-    throw Error("All fields must be filled");
+    throw Error("Wypełnij wszystkie pola");
   }
 
   if (!validator.isEmail(email)) {
-    throw Error("Email not valid");
+    throw Error("Nieprawidłowy email");
   }
   if (!validator.isStrongPassword(password)) {
-    throw Error("Password not strong enough");
+    throw Error("Hasło zbyt słabe");
   }
 
   const exists = await this.findOne({ email });
 
   if (exists) {
-    throw Error("Email already in use");
+    throw Error("Tej email już istnieje");
   }
 
   const sameName = await this.findOne({ name });
   if (sameName) {
-    throw Error("Name already in use");
+    throw Error("Ta nazwa już istnieje");
   }
 
   const salt = await bcrypt.genSalt(10);
@@ -69,17 +69,17 @@ userSchema.statics.signup = async function (name, email, password, isAdmin) {
 userSchema.statics.login = async function (email, password) {
   // fields validation for signup
   if (!email || !password) {
-    throw Error("All fields must be filled");
+    throw Error("Wypełnij wszystkie pola");
   }
 
   const user = await this.findOne({ email });
   if (!user) {
-    throw Error("Incorrect email");
+    throw Error("Niewłaściwy email");
   }
 
   const match = await bcrypt.compare(password, user.password);
   if (!match) {
-    throw Error("Incorrect password");
+    throw Error("Niewłaściwe hasło");
   }
 
   return user;

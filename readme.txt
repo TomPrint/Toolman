@@ -186,3 +186,8 @@
 - change Navbar description na styling
 - update styling in WorkerDetails.js
 - 
+
+23/11 - update MangeUsers.js with delete function
+- fetchAll users and delete user by _id
+- frontend table to display all users
+- update messages and error alert in Polish

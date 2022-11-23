@@ -25,11 +25,11 @@ const Signup = () => {
         onSubmit={handleSubmit}
       >
         <h3 className="block text-[#00df9a] text-sm font-bold mb-2 text-center">
-          Create a New User
+          Stwórz Nowego Użytkownika
         </h3>
         <div class="mb-4">
           <label className="block text-gray-700 text-sm font-bold mb-2">
-            Name:
+            Nazwa:
           </label>
           <input
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -40,7 +40,7 @@ const Signup = () => {
         </div>
         <div className="mb-4">
           <label className="block text-gray-700 text-sm font-bold mb-2">
-            Email address:
+            Adres Email:
           </label>
           <input
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -51,7 +51,7 @@ const Signup = () => {
         </div>
         <div className="mb-2">
           <label className="block text-gray-700 text-sm font-bold mb-2">
-            Password:
+            Hasło:
           </label>
           <input
             className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-2 leading-tight focus:outline-none focus:shadow-outline"
@@ -72,7 +72,7 @@ const Signup = () => {
             onChange={handleChange}
             
           > 
-            <option value="">-- Choose --</option>
+            <option value="">-- Wybierz --</option>
             <option value={true}>Tak</option>
             <option value={false}>Nie</option>
           </select>
@@ -82,7 +82,7 @@ const Signup = () => {
             disabled={isLoading}
             className=" bg-gray-500 hover:bg-[#00df9a] text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
           >
-            Sign up
+            Utwórz
           </button>
           {error && (
             <div className="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800 mt-2">
