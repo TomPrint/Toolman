@@ -9,6 +9,7 @@ function ItemForm() {
     const [workersList, setWorkersList] = useState([])
     const [atEmployee, setAtEmployee] = useState(null)
     const [error, setError] = useState(null)
+    const [submit, setSubmit] = useState(null)
     
     //Use effect to get worker data. We use workersList and setWorkersList to grab them
     useEffect(()=>{
@@ -41,6 +42,7 @@ function ItemForm() {
         const json = await response.json()
         if (!response.ok) {
             setError(json.error)
+            setSubmit(null)
         }
         if (response.ok) {
             setModel('')
@@ -50,6 +52,7 @@ function ItemForm() {
             setError(null)
             setAtEmployee(null)
             console.log('new item added', json)
+            setSubmit(`Pomyślnie dodano narzędzie ${item.title}`)
         }
     }
 
@@ -57,7 +60,7 @@ function ItemForm() {
     return ( 
         <div className="flex justify-center h-30 max-w-[1240px] mx-auto px-4 text-white">
         <form className="w-3/4 md:w-1/2 shadow-md rounded px-2 pt-6 pb-3 mb-4" onSubmit={handleSubmit}>
-            <h3 className="py-4 text-xl">Dodaj nowe narzędzie :</h3>
+            <h3 className="py-4 text-xl">Dodaj nowe narzędzie:</h3>
             
             <label className="block text-gray-500 text-sm py-2">Nazwa narzędzia</label>
             <input className="text-black w-[100%]"
@@ -100,6 +103,8 @@ function ItemForm() {
             <div className="flex justify-center">
              <button className="  bg-gray-500 hover:bg-[#00df9a] transition-all duration-500 text-white rounded py-2 px-5 m-8">Dodaj narzędzie</button>
             </div>
+            {error && <div className="error bg-[#960019] text-center">{error}</div>}
+            {submit && <div className="bg-[#10742b] text-center">{submit}</div>}
         </form>
         </div>
      );

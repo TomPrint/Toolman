@@ -191,3 +191,6 @@
 - fetchAll users and delete user by _id
 - frontend table to display all users
 - update messages and error alert in Polish
+
+23/11 - new item form - error&sucess messages
+- update ItemControler.js and itemForm to show error or sucess messages
