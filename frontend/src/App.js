@@ -25,7 +25,6 @@ function App() {
         <Navbar />
         <div className="pages text-white">
           <Routes>
-
             <Route path="/" element={user ? <Home /> : <Navigate to="/login" />} />
             <Route path="/admin" element={user ? <Admin /> : <Navigate to="/login" />} />
             <Route path="/signup" element={user ? <Signup /> : <Navigate to="/login" />} />

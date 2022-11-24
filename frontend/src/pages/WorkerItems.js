@@ -5,23 +5,19 @@ import { useParams } from "react-router-dom"
 import LoadingSpinner from "../components/LoadingSpinner"
 
 const WorkerItems = () => {
-  
+  setTimeout(1000)
   //pass workerId parameter from App.js form Route (must be the same name of id param)
   const { workerId} = useParams();
-
+  console.log(useParams())
   const [workerItems, setWorkerItems] = useState(null)
-
-  const [loading, setLoading] = useState(false)
   
   useEffect(() => {
     const fetchWorkerItems = async () => {
-      setLoading(true)
       const response = await fetch(`/api/employee/workers/${workerId}/items`)
       const json = await response.json()
       // to get an array of objet
       if (response.ok) {
         setWorkerItems(json)
-        setLoading(false)
       }
     }
     // fire a function  
@@ -29,11 +25,11 @@ const WorkerItems = () => {
     // include that param in dependencies
   }, [workerId])
 
-  // if (workerItems){
-    
+  if (!workerItems) {
+    return (<div className="flex justify-center items-center "><LoadingSpinner/></div>)
+  }
   return (
     <div className="flex justify-center h-30 max-w-[1240px] mx-auto px-4 text-white py-10">
-       { loading ? (<div className="flex justify-center items-center "><LoadingSpinner/></div>) :
           <div className="w-3/4 md:w-1/1">
             <table class="min-w-full border text-center p-4">
                 <thead className="border-b p-4 bg-[#00df9a] text-xl">
@@ -55,8 +51,7 @@ const WorkerItems = () => {
                 ))}
                 </tbody>
             </table>
-          </div>
-        }  
+          </div> 
     </div>
   )
 }
