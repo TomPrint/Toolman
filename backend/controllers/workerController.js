@@ -56,8 +56,6 @@ const getWorkerItems = async (req, res) => {
     return res.status(404).json({error: 'No such worker'})
   }
   const workerItems = await Item.find({atEmployee:id})
-  
-  console.log(workerItems)
   res.status(200).json(workerItems)
   }
   

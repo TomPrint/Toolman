@@ -199,3 +199,12 @@
 - show user.email at homepage
 - style ManageUser page to work on mobile devices
 - lesser css changes
+
+24/11 - react-spinner-loader
+- "npm install react-loader-spinner --save"
+- create LoadingSpinner.js in components & import loading-spinner there - DNA type.
+- import loading spiner into ManageUser.js - create loading state and create logic in render
+- import loading spiner into Workers.js - create loading state and create logic in render
+- import loading spiner into Items.js - create loading state and create logic in render
+- import loading spiner into WorkerItems.js - create loading state and create logic in render
+- update styling and fix button in admin panel
