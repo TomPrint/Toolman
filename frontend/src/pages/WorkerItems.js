@@ -8,7 +8,7 @@ const WorkerItems = () => {
   setTimeout(1000)
   //pass workerId parameter from App.js form Route (must be the same name of id param)
   const { workerId} = useParams();
-  console.log(useParams())
+
   const [workerItems, setWorkerItems] = useState(null)
   
   useEffect(() => {
@@ -56,6 +56,4 @@ const WorkerItems = () => {
   )
 }
 
-
- 
 export default WorkerItems;
