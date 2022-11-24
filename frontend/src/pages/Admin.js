@@ -5,20 +5,15 @@ const Admin = () => {
    
     <div>
       
-      <h2 className="flex justify-center py-2 text-xl">
-        Panel Administratora:
-      </h2>
+      <h1 className="flex justify-center py-4 text-xl font-bold"> Panel Administratora:</h1>
       <div className="flex justify-between items-center h-30 max-w-[1240px] mx-auto px-4 text-white">
         <div class="p-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-7">
-          <button className="bg-blue-500 hover:bg-[#00df9a] text-white font-bold py-2 px-4 border rounded border-zinc-900">
-            <Link to="/signup">Zarejestruj Nowych Użytkowników</Link>
-          </button>
-          <button className="bg-blue-500 hover:bg-[#00df9a] text-white font-bold py-2 px-4 border rounded border-zinc-900">
-            <Link to="/manage">Zarządzaj Użytkownikami</Link>
-          </button>
-          
-          <a href="http://www.influencio.pl"
-  className="bg-blue-500 hover:bg-[#00df9a] text-white text-center font-bold py-2 px-4 border rounded border-zinc-900">Rozrywka</a>
+        <Link to="/signup"><button className="bg-blue-500 hover:bg-[#00df9a] text-white font-bold py-2 px-4 border rounded border-zinc-900">
+            Zarejestruj Nowych Użytkowników</button></Link>  
+        <Link to="/manage"><button className="bg-blue-500 hover:bg-[#00df9a] text-white font-bold py-2 px-4 border rounded border-zinc-900">
+            Zarządzaj Użytkownikami</button></Link>
+  
+          <a  href="http://www.influencio.pl" className="bg-blue-500 text-center hover:bg-[#00df9a] text-white font-bold py-2 px-4 border rounded border-zinc-900">Rozrywka</a>
          
 
           
