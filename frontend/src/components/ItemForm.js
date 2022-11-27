@@ -3,6 +3,10 @@ import { useState, useEffect } from "react";
 function ItemForm() {
 
     const [title, setTitle] = useState('')
+    const [producer, setProducer] = useState('')
+    const [seller, setSeller] = useState('')
+    const [purchaseDate, setPurchaseDate] = useState('')
+    const [warrantyDate, setWarrantyDate] = useState('')
     const [model, setModel] = useState('')
     const [serialNumber, setSerialNumber] = useState('')
     const [yearOfProduction, setYearOfProduction] = useState('')
@@ -30,7 +34,17 @@ function ItemForm() {
     //POST after submit button
     const handleSubmit = async (e) => {
         e.preventDefault()
-        const item = {title, model, serialNumber, yearOfProduction, atEmployee}
+        const item = {
+            title,
+            model,
+            producer,
+            serialNumber,
+            yearOfProduction,
+            atEmployee,
+            seller,
+            warrantyDate,
+            purchaseDate,
+        }
         const response = await fetch ('/api/tools/items/add', {
             method: 'POST',
             body: JSON.stringify(item),
@@ -45,6 +59,10 @@ function ItemForm() {
             setSubmit(null)
         }
         if (response.ok) {
+            setProducer('')
+            setSeller('')
+            setWarrantyDate('')
+            setPurchaseDate('')
             setModel('')
             setTitle('')
             setSerialNumber('')
@@ -62,11 +80,18 @@ function ItemForm() {
         <form className="w-3/4 md:w-1/2 shadow-md rounded px-2 pt-6 pb-3 mb-4" onSubmit={handleSubmit}>
             <h3 className="py-4 text-xl">Dodaj nowe narzędzie:</h3>
             
-            <label className="block text-gray-500 text-sm py-2">Nazwa narzędzia</label>
+            <label className="block text-gray-500 text-sm py-2">Nazwa narzędzia:</label>
             <input className="text-black w-[100%]"
             type="text"
             onChange={(e) => setTitle(e.target.value)}
             value={title}
+             />
+
+            <label className="block text-gray-500 text-sm py-2">Producent: </label>
+            <input className="text-black w-[100%]"
+            type="text"
+            onChange={(e) => setProducer(e.target.value)}
+            value={producer}
              />
 
             <label className="block text-gray-500 text-sm py-2">Model: </label>
@@ -83,9 +108,30 @@ function ItemForm() {
             value={serialNumber}
              />
 
-            <label className="block text-gray-500 text-sm py-2">Rok produkcji:</label>
+            <label className="block text-gray-500 text-sm py-2">Data zakupu:</label>
+            <input className="text-black w-[100%]"
+            type="date"
+            onChange={(e) => setPurchaseDate(e.target.value)}
+            value={purchaseDate}
+             />
+
+            <label className="block text-gray-500 text-sm py-2">Gwarancja do:</label>
+            <input className="text-black w-[100%]"
+            type="date"
+            onChange={(e) => setWarrantyDate(e.target.value)}
+            value={warrantyDate}
+             />
+
+            <label className="block text-gray-500 text-sm py-2">Sprzedawca:</label>
             <input className="text-black w-[100%]"
             type="text"
+            onChange={(e) => setSeller(e.target.value)}
+            value={seller}
+             />
+
+            <label className="block text-gray-500 text-sm py-2">Rok produkcji:</label>
+            <input className="text-black w-[100%]"
+            type="number"
             onChange={(e) => setYearOfProduction(e.target.value)}
             value={yearOfProduction}
              />

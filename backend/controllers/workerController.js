@@ -43,7 +43,7 @@ const getWorker = async (req, res) => {
   res.status(200).json(worker)
 }
 
-//! GET a single worker all items // need to add error check later here
+//! GET a single worker all items 
 
 const getWorkerItems = async (req, res) => {
   const { id } = req.params;
