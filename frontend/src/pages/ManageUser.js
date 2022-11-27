@@ -62,7 +62,7 @@ function ManageUser() {
                           {user.isAdmin ? "Tak" : "Nie"}
                           </td>
                           <td className="py-4 px-6 text-right">
-                          <button className="bg-red-500 hover:bg-[#00df9a]  text-white font-semibold py-2 px-4 border border-zinc-900 rounded shadow" onClick={() => deleteOperation(user._id)}>Usuń</button>
+                          <button className="bg-red-500 hover:bg-[#00df9a] transition-all duration-500  text-white font-semibold py-2 px-4 border border-zinc-900 rounded shadow" onClick={() => deleteOperation(user._id)}>Usuń</button>
                           </td>
                       </tr>
                       ))}

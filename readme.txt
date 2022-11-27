@@ -208,3 +208,11 @@
 - import loading spiner into Items.js - create loading state and create logic in render
 - import loading spiner into WorkerItems.js - create loading state and create logic in render
 - update styling and fix button in admin panel
+
+25/11 - updates in itemModel and views + tailwind styles
+- add transition to delete button in ManageUser
+- in WorkerItems - show the name of the Item Owner.
+- add new fields in Item Model in backend + update itemController
+- update Item Form to add new fields while creating a new item
+- update views - ItemDetails, WorkerItems to show new fields
+- update button transition hover in Admin
