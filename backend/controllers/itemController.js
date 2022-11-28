@@ -60,7 +60,7 @@ const getItem = async (req, res) => {
     return res.status(404).json({error: 'No such item'})
   }
   //Find item by id
-  const item = await Item.findById(id)
+  const item = await Item.findById(id).populate('atEmployee')
   // if no item - res error
   if (!item) {
     return res.status(404).json({error: 'No such item'})

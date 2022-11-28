@@ -216,3 +216,11 @@
 - update Item Form to add new fields while creating a new item
 - update views - ItemDetails, WorkerItems to show new fields
 - update button transition hover in Admin
+
+26/11 - create SingleItem view
+- update itemController to populate queryset to show atEmployee.name
+- update Routes in App.js ->  /items/itemId -> "itemId" passed as useParams() to SingleItem
+- update Routes in backend -> tools.js
+- update ItemDetail to add buton to a SingleItem and pass the ID
+- code cleaning in WorkerDetails.js
+- create SingleItem.js to show single item with all details taken from Item Form. (creating new Item)

@@ -19,7 +19,7 @@ const router = express.Router();
 router.get("/items", getItems, getWorkers)
 
 // GET a single item
-router.get("/:id", getItem)
+router.get("/items/:id", getItem)
 
 // POST a new item
 router.post("/items/add", createItem, getWorkers)
