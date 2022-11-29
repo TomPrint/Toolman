@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { useParams, Navigate, useNavigate } from "react-router-dom"
 import { format } from 'date-fns'
 
 //components
@@ -7,10 +7,25 @@ import LoadingSpinner from "../components/LoadingSpinner"
 
 
 const SingleItem = () => {
-
+  
+  const navigate = useNavigate()
   const { itemId } = useParams()  
   const [item, setItem] = useState(null)
-
+  
+  const handleDelete = async() =>{
+    
+      const response = await fetch (`/api/tools/items/${itemId}`, {
+      method: 'DELETE',
+      body: JSON.stringify(item),
+      headers: {
+          'Content-Type':'application/json'
+      }})
+        if (response.ok) {
+          navigate('/items')
+       }
+      //  add error prevent and modal before deleting
+  }
+  
 
   useEffect(() => {
     const fetchItem = async () => {
@@ -33,7 +48,7 @@ const SingleItem = () => {
     <h1 className="flex justify-center py-4 text-xl font-bold">Szczegóły narzędzia: </h1>
     <div className="flex justify-center h-30 max-w-[1240px] mx-auto px-2 text-white py-10">
           <div className="w-4/4 md:w-5/6">
-            <h2 className="text-xl py-4 text-[#00df9a] font-bold">Nazwa - {item.title}</h2>
+            <h2 className="text-xl py-4 text-[#00df9a] font-bold">{item.title}</h2>
              <p>Producent: {item.producer}</p>
              <p>Model: {item.model}</p>
              <p>S/N: {item.serialNumber}</p>
@@ -42,6 +57,9 @@ const SingleItem = () => {
              <p>Data zakupu: <span className="text-[#00df9a] text-sm">{item.purchaseDate && format(new Date(item.purchaseDate),'dd/MM/yyyy')}</span></p>
              <p>Data gwarancji: <span className="text-[#00df9a] text-sm">{item.warrantyDate && format(new Date(item.warrantyDate),'dd/MM/yyyy')}</span></p>
              <p>U pracownika: {item.atEmployee && item.atEmployee.name}</p>
+             <div className="flex justify-center">
+             <button onClick={handleDelete} className=" bg-gray-500 hover:bg-[#00df9a] transition-all duration-500 text-white rounded py-2 px-5 m-8">Usuń narzędzie</button>
+            </div>
           </div> 
     </div>
     </div>

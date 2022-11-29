@@ -224,3 +224,8 @@
 - update ItemDetail to add buton to a SingleItem and pass the ID
 - code cleaning in WorkerDetails.js
 - create SingleItem.js to show single item with all details taken from Item Form. (creating new Item)
+
+27/11 - deleting an Item
+- update tools.js in backend
+- add button and handleDelete in SingleItems.js
+- use Navigate to redirect to sucess url after deleting.
