@@ -25,7 +25,7 @@ router.get("/items/:id", getItem)
 router.post("/items/add", createItem, getWorkers)
 
 // DELETE a item
-router.delete("/:id", deleteItem)
+router.delete("/items/:id", deleteItem)
 
 // UPDATE a item
 router.patch("/:id", updateItem)
