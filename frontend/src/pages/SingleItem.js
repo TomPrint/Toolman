@@ -4,13 +4,15 @@ import { format } from 'date-fns'
 
 //components
 import LoadingSpinner from "../components/LoadingSpinner"
-
+import Modal from "../components/Modal"
 
 const SingleItem = () => {
   
   const navigate = useNavigate()
   const { itemId } = useParams()  
   const [item, setItem] = useState(null)
+  const [openModal, setOpenModal] = useState(false)
+
   
   const handleDelete = async() =>{
     
@@ -58,7 +60,8 @@ const SingleItem = () => {
              <p>Data gwarancji: <span className="text-[#00df9a] text-sm">{item.warrantyDate && format(new Date(item.warrantyDate),'dd/MM/yyyy')}</span></p>
              <p>U pracownika: {item.atEmployee && item.atEmployee.name}</p>
              <div className="flex justify-center">
-             <button onClick={handleDelete} className=" bg-gray-500 hover:bg-[#00df9a] transition-all duration-500 text-white rounded py-2 px-5 m-8">Usuń narzędzie</button>
+             <button onClick={()=> {setOpenModal(true)}} className=" bg-gray-500 hover:bg-[#00df9a] transition-all duration-500 text-white rounded py-2 px-5 m-8">Usuń narzędzie</button>
+             {openModal && <Modal handleDelete={handleDelete} setOpenModal={setOpenModal}/>}
             </div>
           </div> 
     </div>

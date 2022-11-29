@@ -229,3 +229,8 @@
 - update tools.js in backend
 - add button and handleDelete in SingleItems.js
 - use Navigate to redirect to sucess url after deleting.
+
+29/11 - add modal before deleting an Item
+- create Modal.js
+- add modal logic to SingleItem.js
+- need styling to finish
