@@ -234,3 +234,8 @@
 - create Modal.js
 - add modal logic to SingleItem.js
 - need styling to finish
+
+30/11 - styling modal and SingleItem
+- update styling in Modal.js using Tailwind
+- update styling in SingleItem.js using Tailwind
+- add descirption property to pass to modal
