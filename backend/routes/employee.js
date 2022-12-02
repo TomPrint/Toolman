@@ -1,28 +1,30 @@
-const express = require('express');
-const { 
-   createWorker,
-   getWorkers,
-   getWorker,
-   getWorkerItems,
-   deleteWorker,
-   updateWorker,
+const express = require("express");
 
-   } = require("../controllers/workerController")
+const {
+  createWorker,
+  getWorkers,
+  getWorker,
+  getWorkerItems,
+  deleteWorker,
+  updateWorker,
+} = require("../controllers/workerController");
+const requireAuth = require("../middleware/requireAuth");
 
 const router = express.Router();
+router.use(requireAuth)
 
 
 // GET all workers
-router.get("/workers", getWorkers)
+router.get("/workers", getWorkers);
 
 // GET a single worker
-router.get("/workers/:id", getWorker)
+router.get("/workers/:id", getWorker);
 
 //GET a single worker all items
-router.get("/workers/:id/items", getWorkerItems, getWorker)
+router.get("/workers/:id/items", getWorkerItems, getWorker);
 
 // POST a new worker
-router.post("/workers/add", createWorker)
+router.post("/workers/add", createWorker);
 
 // // DELETE a worker
 // router.delete("/:id", deleteWorker)

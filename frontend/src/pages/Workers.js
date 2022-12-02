@@ -3,15 +3,19 @@ import { useEffect, useState } from "react"
 // components
 import WorkerDetails from "../components/WorkerDetails"
 import LoadingSpinner from "../components/LoadingSpinner"
+import {useAuthContext} from '../hooks/useAuthContext'
 
 const Workers = () => {
     const [workers, setWorkers] = useState(null)
     const [loading, setLoading]=useState(false)
+    const {user} = useAuthContext()
 
   useEffect(() => {
     const fetchWorkers = async () => {
       setLoading(true)
-      const response = await fetch('/api/employee/workers')
+      const response = await fetch('/api/employee/workers',{
+        headers: {'Authorization': `Bearer ${user.token}`},
+      })
       const json = await response.json()
       // to get an array of objet
       if (response.ok) {
@@ -20,8 +24,10 @@ const Workers = () => {
       }
     }
     // fire a function 
+    if (user){
     fetchWorkers()
-  }, [])
+  }
+  }, [user])
 
   return (
     <div>

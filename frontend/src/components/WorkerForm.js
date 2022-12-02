@@ -1,12 +1,19 @@
 import { useState } from "react";
+import {useAuthContext} from '../hooks/useAuthContext'
 
 const WorkerForm = () => {
     const [name, setName] = useState('')
     const [position, setPosition] = useState('')
     const [error, setError] = useState(null)
+    const {user} = useAuthContext()
     
     const handleSubmit = async (e) => {
         e.preventDefault()
+
+        if (!user){
+            setError("Musisz być zalogowany")
+            return
+        }
 
         const worker = {name, position}
 
@@ -14,12 +21,13 @@ const WorkerForm = () => {
             method: 'POST',
             body: JSON.stringify(worker),
             headers: {
+                'Authorization': `Bearer ${user.token}`,
                 'Content-Type':'application/json'
             }
         })
         // we get back response as json and storing it it json
         const json = await response.json()
-
+     
         if (!response.ok) {
             setError(json.error)
         }
@@ -30,7 +38,8 @@ const WorkerForm = () => {
             setError(null)
             console.log('new worker added', json)
         }
-    }
+    
+} 
 
 
     return ( 

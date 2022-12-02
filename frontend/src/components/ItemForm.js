@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import {useAuthContext} from '../hooks/useAuthContext'
 
 function ItemForm() {
 
@@ -14,17 +15,24 @@ function ItemForm() {
     const [atEmployee, setAtEmployee] = useState(null)
     const [error, setError] = useState(null)
     const [submit, setSubmit] = useState(null)
+    const {user} = useAuthContext()
+    
     
     //Use effect to get worker data. We use workersList and setWorkersList to grab them
     useEffect(()=>{
         const fetchWorkers = async () =>{
-            const response = await fetch('/api/employee/workers')
+            const response = await fetch('/api/employee/workers',{
+                headers: {'Authorization': `Bearer ${user.token}`},
+              })
             const newData = response.json()
             //need add await otherwise we have pending and promise no array [] that we need to map
             setWorkersList(await newData)
     };
+
+    if(user){
     fetchWorkers();
-    },[])
+    }
+    },[user])
     
     // on select change we match value from event target to setAtEployee
     const handleChange = (event) => {

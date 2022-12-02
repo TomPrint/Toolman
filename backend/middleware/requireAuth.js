@@ -23,17 +23,19 @@ const requireAuth = async (req, res, next) => {
   }
 }
 
+module.exports = requireAuth
+
 
 // For Admin Only
-const adminAccess = (req, res, next) => {
-  auth(req, res, () => {
-    if (req.user.isAdmin) {
-      next();
-    } else {
-      res.status(403).send("Access denied. Not authorized...");
-    }
-  });
-};
+// const adminAccess = (req, res, next) => {
+//   auth(req, res, () => {
+//     if (req.user.isAdmin) {
+//       next();
+//     } else {
+//       res.status(403).send("Access denied. Not authorized...");
+//     }
+//   });
+// };
 
 
-module.exports = {requireAuth, adminAccess}
+// module.exports = {requireAuth, adminAccess}

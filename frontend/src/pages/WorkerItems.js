@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
-
+import {useAuthContext} from '../hooks/useAuthContext'
 //components
 import LoadingSpinner from "../components/LoadingSpinner"
 
@@ -8,14 +8,18 @@ const WorkerItems = () => {
   setTimeout(1000)
   //pass workerId parameter from App.js form Route (must be the same name of id param)
   const { workerId} = useParams();
-
+  const {user} = useAuthContext()
   const [workerItems, setWorkerItems] = useState(null)
   const [worker, setWorker] = useState()
   
   useEffect(() => {
     const fetchWorkerItems = async () => {
-      const response = await fetch(`/api/employee/workers/${workerId}/items`)
-      const response2 = await fetch(`/api/employee/workers/${workerId}`)
+      const response = await fetch(`/api/employee/workers/${workerId}/items`,{
+        headers: {'Authorization': `Bearer ${user.token}`},
+      })
+      const response2 = await fetch(`/api/employee/workers/${workerId}`,{
+        headers: {'Authorization': `Bearer ${user.token}`},
+      })
       const json = await response.json()
       const json2 = await response2.json()
       // to get an array of objet
@@ -27,10 +31,12 @@ const WorkerItems = () => {
       }
 
     }
-    // fire a function  
+    // fire a function
+    if (user){  
     fetchWorkerItems()
+  }
     // include that param in dependencies
-  }, [workerId])
+  }, [workerId, user])
 
   if (!workerItems) {
     return (<div className="flex justify-center items-center "><LoadingSpinner/></div>)

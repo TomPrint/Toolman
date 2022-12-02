@@ -209,10 +209,7 @@
 - import loading spiner into WorkerItems.js - create loading state and create logic in render
 - update styling and fix button in admin panel
 
-02/12 - delete user modal
-- create DeleteUserModal
-- passing props with onSubmit
-- invoking a delete function in ManageUser when modal is confirmed
+
 25/11 - updates in itemModel and views + tailwind styles
 - add transition to delete button in ManageUser
 - in WorkerItems - show the name of the Item Owner.
@@ -243,3 +240,15 @@
 - update styling in Modal.js using Tailwind
 - update styling in SingleItem.js using Tailwind
 - add descirption property to pass to modal
+
+02/12 - delete user modal
+- create DeleteUserModal
+- passing props with onSubmit
+- invoking a delete function in ManageUser when modal is confirmed
+
+02/12 - protecting employee api routes from unauthorized users
+BACKEND
+- apply requireAuth for all employee routes by adding router.use(requireAuth)
+FRONTEND
+-use authorization in headers while fetching data
+-if-check for user before fetch function is called
