@@ -5,7 +5,17 @@ const mongoose = require('mongoose')
 //! CREATE new item 
 const createItem = async (req, res) => {
   //destructuring form req.body
-  const {title, model, serialNumber, yearOfProduction, atEmployee} = req.body
+  const {
+    title,
+    model,
+    producer,
+    serialNumber,
+    yearOfProduction,
+    atEmployee,
+    seller,
+    warrantyDate,
+    purchaseDate,
+  } = req.body
 
   if (!title){
     return res.status(400).json({error:'Błąd! Wymagane jest podanie chociaż nazwy narzędzia.'})
@@ -13,7 +23,17 @@ const createItem = async (req, res) => {
 
   //try-catch to create new Item and catch error. Add "await" because of "async" - Js promise above
   try {
-    const item = await Item.create({title, model, serialNumber, yearOfProduction, atEmployee})
+    const item = await Item.create({
+      title,
+      model,
+      producer,
+      serialNumber,
+      yearOfProduction,
+      atEmployee,
+      seller,
+      warrantyDate,
+      purchaseDate,
+    })
     res.status(200).json(item)
   } catch(error) {
     res.status(400).json({error: error.message})
@@ -40,7 +60,7 @@ const getItem = async (req, res) => {
     return res.status(404).json({error: 'No such item'})
   }
   //Find item by id
-  const item = await Item.findById(id)
+  const item = await Item.findById(id).populate('atEmployee')
   // if no item - res error
   if (!item) {
     return res.status(404).json({error: 'No such item'})

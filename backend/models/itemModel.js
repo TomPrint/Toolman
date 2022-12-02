@@ -24,6 +24,10 @@ const itemSchema = new Schema ({
         type: Number,
         required: false
     },
+    seller:{
+        type: String,
+        required: false
+    },
     purchaseDate: { 
         type: Date,
         default: Date.now

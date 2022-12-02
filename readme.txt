@@ -213,3 +213,33 @@
 - create DeleteUserModal
 - passing props with onSubmit
 - invoking a delete function in ManageUser when modal is confirmed
+25/11 - updates in itemModel and views + tailwind styles
+- add transition to delete button in ManageUser
+- in WorkerItems - show the name of the Item Owner.
+- add new fields in Item Model in backend + update itemController
+- update Item Form to add new fields while creating a new item
+- update views - ItemDetails, WorkerItems to show new fields
+- update button transition hover in Admin
+
+26/11 - create SingleItem view
+- update itemController to populate queryset to show atEmployee.name
+- update Routes in App.js ->  /items/itemId -> "itemId" passed as useParams() to SingleItem
+- update Routes in backend -> tools.js
+- update ItemDetail to add buton to a SingleItem and pass the ID
+- code cleaning in WorkerDetails.js
+- create SingleItem.js to show single item with all details taken from Item Form. (creating new Item)
+
+27/11 - deleting an Item
+- update tools.js in backend
+- add button and handleDelete in SingleItems.js
+- use Navigate to redirect to sucess url after deleting.
+
+29/11 - add modal before deleting an Item
+- create Modal.js
+- add modal logic to SingleItem.js
+- need styling to finish
+
+30/11 - styling modal and SingleItem
+- update styling in Modal.js using Tailwind
+- update styling in SingleItem.js using Tailwind
+- add descirption property to pass to modal
