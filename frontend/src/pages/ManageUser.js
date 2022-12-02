@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useAuthContext } from "../hooks/useAuthContext";
-
+import MyModal from "../components/DeleteUserModal"
 import LoadingSpinner from "../components/LoadingSpinner";
 
 function ManageUser() {
@@ -62,15 +62,18 @@ function ManageUser() {
                           {user.isAdmin ? "Tak" : "Nie"}
                           </td>
                           <td className="py-4 px-6 text-right">
-                          <button className="bg-red-500 hover:bg-[#00df9a]  text-white font-semibold py-2 px-4 border border-zinc-900 rounded shadow" onClick={() => deleteOperation(user._id)}>Usuń</button>
+                          <MyModal onSubmit={() => deleteOperation(user._id)}/>
+                          
                           </td>
                       </tr>
+                      
                       ))}
                   </tbody>
               </table>
           </div>
         }   
       </div>
+      
       </div>
     </div>
   );

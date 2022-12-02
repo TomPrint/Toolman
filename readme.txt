@@ -208,3 +208,8 @@
 - import loading spiner into Items.js - create loading state and create logic in render
 - import loading spiner into WorkerItems.js - create loading state and create logic in render
 - update styling and fix button in admin panel
+
+02/12 - delete user modal
+- create DeleteUserModal
+- passing props with onSubmit
+- invoking a delete function in ManageUser when modal is confirmed
