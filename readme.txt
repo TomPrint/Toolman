@@ -252,3 +252,11 @@ BACKEND
 FRONTEND
 -use authorization in headers while fetching data
 -if-check for user before fetch function is called
+
+
+03/12 - protecting tool api routes from unauthorized users
+BACKEND
+- appy requireAuth for all tools routes
+FRONTEND
+-use authorization in headers while fetching data
+-if-check for user before fetch function is called

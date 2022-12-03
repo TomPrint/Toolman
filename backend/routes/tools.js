@@ -1,5 +1,5 @@
 const express = require('express');
-const {requireAuth, adminAccess} = require ('../middleware/requireAuth')
+
 const { 
   createItem,
    getItems,
@@ -9,10 +9,11 @@ const {
    } = require('../controllers/itemController')
 
 const { getWorkers } = require('../controllers/workerController')
+const requireAuth = require("../middleware/requireAuth");
 
 const router = express.Router();
 // require authorization for all routes
-// router.use(requireAuth)
+router.use(requireAuth)
 
 
 // GET all items

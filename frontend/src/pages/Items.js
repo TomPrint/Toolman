@@ -1,19 +1,24 @@
 import { useEffect, useState } from "react"
 
 
+
 // components
 import ItemDetails from "../components/ItemDetails"
 import LoadingSpinner from "../components/LoadingSpinner"
+import {useAuthContext} from '../hooks/useAuthContext'
 
 
 const Items = () => {
     const [items, setItems] = useState(null)
     const [loading, setLoading] = useState(false)
+    const {user} = useAuthContext()
 
   useEffect(() => {
     const fetchItems = async () => {
       setLoading(true);
-      const response = await fetch('/api/tools/items')
+      const response = await fetch('/api/tools/items',{
+        headers: {'Authorization': `Bearer ${user.token}`},
+      })
       const json = await response.json()
       // to get an array of objet
       if (response.ok) {
@@ -22,8 +27,10 @@ const Items = () => {
       }
     }
     // fire a function 
+    if (user) {
     fetchItems()
-  }, [])
+  }
+  }, [user])
 
   return (
     <div>

@@ -5,6 +5,7 @@ import { format } from 'date-fns'
 //components
 import LoadingSpinner from "../components/LoadingSpinner"
 import Modal from "../components/Modal"
+import {useAuthContext} from '../hooks/useAuthContext'
 
 const SingleItem = () => {
   
@@ -12,6 +13,7 @@ const SingleItem = () => {
   const { itemId } = useParams()  
   const [item, setItem] = useState(null)
   const [openModal, setOpenModal] = useState(false)
+  const {user} = useAuthContext()
 
   
   const handleDelete = async() =>{
@@ -20,7 +22,8 @@ const SingleItem = () => {
       method: 'DELETE',
       body: JSON.stringify(item),
       headers: {
-          'Content-Type':'application/json'
+          'Content-Type':'application/json',
+          'Authorization': `Bearer ${user.token}`
       }})
         if (response.ok) {
           navigate('/items')
@@ -31,7 +34,9 @@ const SingleItem = () => {
 
   useEffect(() => {
     const fetchItem = async () => {
-      const response = await fetch(`/api/tools/items/${itemId}`)
+      const response = await fetch(`/api/tools/items/${itemId}`,{
+        headers: {'Authorization': `Bearer ${user.token}`}
+      })
       const json = await response.json()
       // to get an array of objet
       if (response.ok) {
@@ -39,8 +44,10 @@ const SingleItem = () => {
       }
     }
     // fire a function 
+    if (user) {
     fetchItem()
-  }, [itemId])
+    }
+  }, [itemId, user])
     
   if (!item) {
     return (<div className="flex justify-center items-center "><LoadingSpinner/></div>)

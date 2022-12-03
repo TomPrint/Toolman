@@ -22,7 +22,7 @@ function ItemForm() {
     useEffect(()=>{
         const fetchWorkers = async () =>{
             const response = await fetch('/api/employee/workers',{
-                headers: {'Authorization': `Bearer ${user.token}`},
+                headers: {'Authorization': `Bearer ${user.token}`}
               })
             const newData = response.json()
             //need add await otherwise we have pending and promise no array [] that we need to map
@@ -57,7 +57,8 @@ function ItemForm() {
             method: 'POST',
             body: JSON.stringify(item),
             headers: {
-                'Content-Type':'application/json'
+                'Content-Type':'application/json',
+                'Authorization': `Bearer ${user.token}`
             }
         })
         // we get back response as json and storing it in json
