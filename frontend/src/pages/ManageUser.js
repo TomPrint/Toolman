@@ -6,12 +6,17 @@ import LoadingSpinner from "../components/LoadingSpinner";
 function ManageUser() {
   const [users, setUser] = useState([]);
   const [loading, setLoading] = useState(false)
+  const {user} = useAuthContext()
   useEffect(() => {
     getData();
-  }, []);
+  }, [user]);
   async function deleteOperation(_id) {
     let result = await fetch(`/api/user/${_id}`, {
       method: "DELETE",
+      headers: {
+        'Authorization': `Bearer ${user.token}`
+    }
+      
     });
     result = await result.json();
     console.warn(result);

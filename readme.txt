@@ -260,3 +260,6 @@ BACKEND
 FRONTEND
 -use authorization in headers while fetching data
 -if-check for user before fetch function is called
+
+03/12 - protecting user delete and signup api routes from unauthorized users
+
