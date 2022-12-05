@@ -7,7 +7,7 @@ const Admin = () => {
       
       <h1 className="flex justify-center py-4 text-xl font-bold"> Panel Administratora:</h1>
       <div className="flex justify-between items-center h-30 max-w-[1240px] mx-auto px-4 text-white">
-        <div class="p-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-7">
+        <div className="p-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-7">
         <Link to="/signup"><button className="bg-blue-500 hover:bg-[#00df9a] transition-all duration-500  text-white font-bold py-2 px-4 border rounded border-zinc-900">
             Zarejestruj Nowych Użytkowników</button></Link>  
         <Link to="/manage"><button className="bg-blue-500 hover:bg-[#00df9a] transition-all duration-500  text-white font-bold py-2 px-4 border rounded border-zinc-900">

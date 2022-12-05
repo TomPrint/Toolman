@@ -34,11 +34,11 @@ const loginUser = async (req, res) => {
     // create a token
     const token = createToken(user._id);
     // checks if created user isAdmin == true
-    if (user.isAdmin){
+    // if (user.isAdmin){
     res.status(200).json({ email, token });
-  } else {
-    return res.status(404).json({error: 'Dostęp tylko dla Administratora'})
-  }
+  // } else {
+  //   return res.status(404).json({error: 'Dostęp tylko dla Administratora'})
+  // }
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
