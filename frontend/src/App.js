@@ -4,7 +4,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 //pages & components
 import Home from "./pages/Home";
 import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
+// import Footer from "./components/Footer";
 import Signup from "./pages/Signup"
 import Items from "./pages/Items";
 import ItemForm from "./components/ItemForm";
@@ -16,10 +16,14 @@ import ManageUser from "./pages/ManageUser";
 import { useAuthContext } from './hooks/useAuthContext'
 import WorkerItems from "./pages/WorkerItems";
 import SingleItem from "./pages/SingleItem";
+import { useIsAdmin } from './hooks/useAdmin'
+
 
 
 function App() {
   const { user } = useAuthContext()
+  const isAdmin = useIsAdmin()
+
   return (
     <div className="App">
       <BrowserRouter>
@@ -27,7 +31,7 @@ function App() {
         <div className="pages text-white">
           <Routes>
             <Route path="/" element={user ? <Home /> : <Navigate to="/login" />} />
-            <Route path="/admin" element={user ? <Admin /> : <Navigate to="/login" />} />
+            <Route path="/admin" element={isAdmin ? <Admin /> : <Navigate to="/login" />} />
             <Route path="/signup" element={user ? <Signup /> : <Navigate to="/login" />} />
             <Route path="/login" element={<Login />} />
             <Route path="/items" element={user ? <Items /> : <Navigate to="/login" />} />

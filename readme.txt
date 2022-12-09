@@ -263,3 +263,11 @@ FRONTEND
 
 03/12 - protecting user delete and signup api routes from unauthorized users
 
+
+09/12 - using user.isAdmin for routes display
+BACKEND
+-add in userControler user.isAdmin, user.name to token
+FRONTEND
+-create a useAdmin hook
+-create user && user.isAdmin validation for /admin link display
+-conditional route protection in app.js

@@ -27,17 +27,6 @@ function ManageUser() {
     let result = await fetch("/api/user/users");
     result = await result.json();
     setUser(result);
-    
-    // checking if activeuser in localstorage is admin
-    const emails = result.flatMap((user) => (user.isAdmin ? user.email : []));
-    const item = JSON.parse(localStorage.getItem("user"));
-    const activeuser = item.email;
-    console.log(activeuser);
-    console.log(emails);
-    if (emails.includes(activeuser)) {
-      console.log('✅ Active User is Admin');
-    }
-
     setLoading(false);
   }
 

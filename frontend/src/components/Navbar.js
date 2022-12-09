@@ -3,12 +3,20 @@ import { Link } from 'react-router-dom'
 import { AiOutlineClose, AiOutlineMenu, AiOutlineTool, AiOutlinePlusCircle } from 'react-icons/ai'
 import { useLogout } from '../hooks/useLogout'
 import { useAuthContext } from '../hooks/useAuthContext'
+import { useIsAdmin } from '../hooks/useAdmin'
+
+
+
 
 const Navbar = () => {
     const [nav, setNav] = useState(false)
-
     const {logout} = useLogout()
     const { user } = useAuthContext()
+    const isAdmin = useIsAdmin()
+    
+
+  ;
+
 
     //set nav to an opossite value
     const handleNav = () => {
@@ -28,7 +36,9 @@ const Navbar = () => {
                     <Link to='/items/add'><li className='p-4 hover:text-[#00df9a] transition-all duration-500'><span className='flex'><AiOutlinePlusCircle size={20}/>Narzędzie</span></li></Link>
                     <Link to='/workers'><li className='p-4 hover:text-[#00df9a] transition-all duration-500'>Pracownicy</li></Link>
                     <Link to='/workers/add'><li className='p-4 hover:text-[#00df9a] transition-all duration-500'><span className='flex'><AiOutlinePlusCircle size={20}/>Pracownik</span></li></Link>
-                    <Link to='/admin'><li className='p-4 hover:text-[#00df9a] transition-all duration-500'>Admin</li></Link>
+                    { isAdmin && user ? <Link to='/admin'><li className='p-4 hover:text-[#00df9a] transition-all duration-500'>Admin {user.name}</li></Link> : <div></div> }
+                   
+
                     {user &&(
                     <button onClick = {handleLogoutClick} className="px-1 ml-4 bg-gray-500 hover:bg-[#00df9a] transition-all duration-500 text-white text-sm rounded-full">Log out <span className="text-xs"></span></button>)}
                      {!user && (<div></div>)}

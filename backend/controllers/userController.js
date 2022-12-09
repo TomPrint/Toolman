@@ -3,8 +3,9 @@ const mongoose = require('mongoose')
 const jwt = require("jsonwebtoken");
 
 
+
 const createToken = (_id) => {
-  return jwt.sign({ _id }, process.env.SECRET, { expiresIn: "3d" });
+  return jwt.sign({ _id}, process.env.SECRET, { expiresIn: "3d" });
 };
 
 
@@ -33,13 +34,16 @@ const loginUser = async (req, res) => {
  
     // create a token
     const token = createToken(user._id);
-    // checks if created user isAdmin == true
-    // if (user.isAdmin){
-    res.status(200).json({ email, token });
-  // } else {
-  //   return res.status(404).json({error: 'Dostęp tylko dla Administratora'})
-  // }
-  } catch (error) {
+    if (token){
+      res.status(200).json({
+        isAdmin: user.isAdmin,
+        email: user.email,
+        name: user.name,
+        token
+       })
+    }
+  }
+ catch (error) {
     res.status(400).json({ error: error.message });
   }
 }
