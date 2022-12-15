@@ -271,3 +271,7 @@ FRONTEND
 -create a useAdmin hook
 -create user && user.isAdmin validation for /admin link display
 -conditional route protection in app.js
+
+ 15/12 - initial backend setup for image upload to AWS S3 with Multer
+ - initial backend setup for image upload to S3 Bucket using Multer
+ - update .env variables for secret keys and S3 credentials
