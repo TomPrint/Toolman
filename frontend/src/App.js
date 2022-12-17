@@ -35,12 +35,12 @@ function App() {
             <Route path="/signup" element={user ? <Signup /> : <Navigate to="/login" />} />
             <Route path="/login" element={<Login />} />
             <Route path="/items" element={user ? <Items /> : <Navigate to="/login" />} />
-            <Route path="/items/:itemId" element={user ? <SingleItem /> : <Navigate to="/login" />} />
-            <Route path="/items/add" element={user ? <ItemForm /> : <Navigate to="/login" />} />
+            <Route path="/items/:itemId" element={isAdmin ? <SingleItem /> : <Navigate to="/login" />} />
+            <Route path="/items/add" element={isAdmin ? <ItemForm /> : <Navigate to="/login" />} />
             <Route path="/workers" element={user ? <Workers /> : <Navigate to="/login" />} />
-            <Route path="/workers/add" element={user ? <WorkerForm /> : <Navigate to="/login" />} />
+            <Route path="/workers/add" element={isAdmin ? <WorkerForm /> : <Navigate to="/login" />} />
             <Route path="/workers/:workerId/items" element={user ? <WorkerItems /> : <Navigate to="/login" />} />
-            <Route path="/manage" element={user ? <ManageUser /> : <Navigate to="/login" />} />
+            <Route path="/manage" element={isAdmin ? <ManageUser /> : <Navigate to="/login" />} />
           </Routes>
           {/* <Footer /> */}
         </div>

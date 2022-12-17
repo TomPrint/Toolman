@@ -32,10 +32,10 @@ const Navbar = () => {
                 <Link to='/'><span className='flex'><h1 className='w-full text-3xl font-bold text-[#00df9a]'>Toolman</h1><AiOutlineTool size={30} color='#00df9a'/></span></Link>
                 <ul className='hidden md:flex'>
                     <Link to='/'><li className='p-4 hover:text-[#00df9a] transition-all'>Home</li></Link>
-                    <Link to='/items'><li className='p-4 hover:text-[#00df9a] transition-all duration-500'>Narzędzia</li></Link>
-                    <Link to='/items/add'><li className='p-4 hover:text-[#00df9a] transition-all duration-500'><span className='flex'><AiOutlinePlusCircle size={20}/>Narzędzie</span></li></Link>
+                    <Link to='/items'><li className='p-4 hover:text-[#00df9a] transition-all duration-500'>Narzędzia</li></Link> 
+                    { isAdmin && user ?<Link to='/items/add'><li className='p-4 hover:text-[#00df9a] transition-all duration-500'><span className='flex'><AiOutlinePlusCircle size={20}/>Narzędzie</span></li></Link> : <div></div> }
                     <Link to='/workers'><li className='p-4 hover:text-[#00df9a] transition-all duration-500'>Pracownicy</li></Link>
-                    <Link to='/workers/add'><li className='p-4 hover:text-[#00df9a] transition-all duration-500'><span className='flex'><AiOutlinePlusCircle size={20}/>Pracownik</span></li></Link>
+                    { isAdmin && user ?<Link to='/workers/add'><li className='p-4 hover:text-[#00df9a] transition-all duration-500'><span className='flex'><AiOutlinePlusCircle size={20}/>Pracownik</span></li></Link> : <div></div> }
                     { isAdmin && user ? <Link to='/admin'><li className='p-4 hover:text-[#00df9a] transition-all duration-500'>Admin {user.name}</li></Link> : <div></div> }
                    
 

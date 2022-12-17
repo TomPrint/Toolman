@@ -275,3 +275,5 @@ FRONTEND
  15/12 - initial backend setup for image upload to AWS S3 with Multer
  - initial backend setup for image upload to S3 Bucket using Multer
  - update .env variables for secret keys and S3 credentials
+
+17/12 - add restrictions for non-admin users

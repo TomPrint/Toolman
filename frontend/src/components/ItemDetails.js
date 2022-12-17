@@ -1,7 +1,11 @@
 import {format} from 'date-fns'
 import { Link } from 'react-router-dom'
+import { useIsAdmin } from '../hooks/useAdmin'
+import { useAuthContext } from '../hooks/useAuthContext'
 
 const ItemDetails = ({item}) => {
+    const isAdmin = useIsAdmin()
+    const { user } = useAuthContext()
     return ( 
 
         <div className="rounded overflow-hidden shadow-lg shadow-cyan-500/40 border-solid border-cyan-700 border-2">
@@ -16,7 +20,7 @@ const ItemDetails = ({item}) => {
         {item.atEmployee && <p className="text-sm">Pracownik : <span className="text-[#00df9a] text-lg">{item.atEmployee.name}</span></p>}
         {!item.atEmployee && <p className="text-sm">Pracownik : <span className="text-[#AB1F1C] text-lg">BRAK</span></p>}
         <p className="text-xs mb-2">Utworzono: <span className="text-[#00df9a] text-sm">{format(new Date(item.createdAt),'dd/MM/yyyy')}</span></p>
-        <Link to ={`/items/${item._id}`}><p>Pokaż szczegóły</p></Link>
+        { isAdmin && user ?<Link to ={`/items/${item._id}`}><p>Pokaż szczegóły</p></Link> : <div></div> }
         </div>
         </div>
      );
