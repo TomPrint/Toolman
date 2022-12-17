@@ -277,3 +277,6 @@ FRONTEND
  - update .env variables for secret keys and S3 credentials
 
 17/12 - add restrictions for non-admin users
+
+17/12 - reorganize s3 bucket code to seperate files
+- regorganize s3 bucket upload code into s3.js config file and multer upload.js file
