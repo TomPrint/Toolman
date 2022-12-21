@@ -280,3 +280,7 @@ FRONTEND
 
 17/12 - reorganize s3 bucket code to seperate files
 - regorganize s3 bucket upload code into s3.js config file and multer upload.js file
+
+22/12 - implement image upload and url feed to databse in itemController.js
+- update the s3.js file
+- update itemController.js to save image link in database when item is created

@@ -41,7 +41,13 @@ const itemSchema = new Schema ({
         type: mongoose.Schema.Types.ObjectId,
         required: false,
         ref:'Worker',
+    },
+
+    image: {
+        type: String,
+        required: false, 
     }
+
 }, { timestamps: true })
 
 module.exports = mongoose.model('Item', itemSchema)

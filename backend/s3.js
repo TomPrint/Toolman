@@ -1,4 +1,4 @@
-// s3.js
+// s3 configuration
 const AWS = require('aws-sdk')
 
 // s3 bucket configuration
@@ -22,14 +22,13 @@ const awsConfig = {
             console.log(err)
             reject(err)
           }
-          console.log(data)
+          // console.log(data)
+          // console.log(data.Location)
           return resolve(data)
         })
   
     })
   }
-  
   module.exports = {
     uploadToS3
   }
-  

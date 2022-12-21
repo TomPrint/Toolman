@@ -69,6 +69,7 @@ const SingleItem = () => {
                 {item.warrantyDate && format(new Date(item.warrantyDate),'dd/MM/yyyy')}
                 </span></p>
              <p>U pracownika: {item.atEmployee && item.atEmployee.name}</p>
+             <p>Link do zdjęcia: {item.image}</p>
              <div className="flex justify-center">
               <button onClick={()=> {setOpenModal(true)}} 
                 className=" bg-gray-500 hover:bg-[#00df9a] transition-all duration-500 text-white rounded py-2 px-5 m-8 ">
