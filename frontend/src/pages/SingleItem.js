@@ -14,6 +14,7 @@ const SingleItem = () => {
   const [item, setItem] = useState(null)
   const [openModal, setOpenModal] = useState(false)
   const {user} = useAuthContext()
+  const [showBigSize, setShowBigSize] = useState(false)
 
   
   const handleDelete = async() =>{
@@ -31,6 +32,8 @@ const SingleItem = () => {
       //  add error prevent and modal before deleting
   }
   
+  
+
 
   useEffect(() => {
     const fetchItem = async () => {
@@ -52,6 +55,8 @@ const SingleItem = () => {
   if (!item) {
     return (<div className="flex justify-center items-center "><LoadingSpinner/></div>)
   }
+
+
   return (
     <div className="flex justify-center h-30 max-w-[1240px] mx-auto px-4 text-white">
       <div className="w-3/4 md:w-1/2 px-2 pt-6 pb-3 mb-4">
@@ -69,7 +74,12 @@ const SingleItem = () => {
                 {item.warrantyDate && format(new Date(item.warrantyDate),'dd/MM/yyyy')}
                 </span></p>
              <p>U pracownika: {item.atEmployee && item.atEmployee.name}</p>
-             <p>Link do zdjęcia: {item.image}</p>
+            
+            {/* If no picture, don't show picture tag */}
+             {item.image ?<p>Zdjęcie:<img src={item.image} alt="zdjęcie" 
+           className="hover:opacity-75 cursor-pointer rounded overflow-hidden shadow-lg shadow-cyan-500/40 border-solid border-cyan-700 border-2"
+           style={{ maxWidth: showBigSize ? '70%' : '10%', maxHeight: showBigSize ? '70%' : '10%' }}
+           onClick={() => setShowBigSize(!showBigSize)}/></p>: null}
              <div className="flex justify-center">
               <button onClick={()=> {setOpenModal(true)}} 
                 className=" bg-gray-500 hover:bg-[#00df9a] transition-all duration-500 text-white rounded py-2 px-5 m-8 ">
