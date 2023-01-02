@@ -290,7 +290,14 @@ FRONTEND
 - use Modal.js with descirption="pracownika"
 - it's working but need to fix to update page after delete.
 
+
+02/01/23 - Deleting worker (finish)
+- refresh page after delete (pass setWorkers from Worker.js to WorkerDetails and update it state after delete)
+- change class to className in views - Worker, Items, Modal etc.
+- delete shadow from ItemForm and WorkerForm
+
 02/01/23 - display images in SingleItem details.
 - update s3 policy to show images
 - create simple onClick functionality to enlarge image
 - conditionally show image if it is avaiable for an item, otherwise display nothing
+

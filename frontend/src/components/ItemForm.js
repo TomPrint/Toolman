@@ -86,7 +86,7 @@ function ItemForm() {
 
     return ( 
         <div className="flex justify-center h-30 max-w-[1240px] mx-auto px-4 text-white">
-        <form className="w-3/4 md:w-1/2 shadow-md rounded px-2 pt-6 pb-3 mb-4" onSubmit={handleSubmit}>
+        <form className="w-3/4 md:w-1/2 px-2 pt-6 pb-3 mb-4" onSubmit={handleSubmit}>
             <h3 className="py-4 text-xl">Dodaj nowe narzędzie:</h3>
             
             <label className="block text-gray-500 text-sm py-2">Nazwa narzędzia:</label>
