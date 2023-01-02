@@ -9,7 +9,7 @@ const ItemDetails = ({item}) => {
     return ( 
 
         <div className="rounded overflow-hidden shadow-lg shadow-cyan-500/40 border-solid border-cyan-700 border-2">
-        <img className="w-full rounded" src="Tool_no_image.png" alt="Mountain"></img>
+        {item.image ? <img className="w-full rounded" src={item.image} alt="Zdjęcie"></img> : <img className="w-full rounded" src={"Tool_no_image.png"} alt="Zdjęcie"></img>}
         <div className="px-3 py-2">
         <div className="text-[#00df9a] text-2xl font-bold">{item.title}</div>
         <p className="text-sm">Producent : <span className="text-[#00df9a] text-lg ">{item.producer}</span></p>
