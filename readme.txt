@@ -284,3 +284,8 @@ FRONTEND
 22/12 - implement image upload and url feed to databse in itemController.js
 - update the s3.js file
 - update itemController.js to save image link in database when item is created
+
+01/01/23 - Deleting worker (1st step)
+- create button in WorkerDetails.js
+- use Modal.js with descirption="pracownika"
+- it's working but need to fix to update page after delete.
