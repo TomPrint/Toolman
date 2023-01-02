@@ -3,18 +3,16 @@ import { format } from 'date-fns'
 import { useState } from 'react'
 import { useAuthContext } from "../hooks/useAuthContext";
 
-import { BsFillArrowDownCircleFill } from 'react-icons/bs'
-
 import Modal from "../components/Modal"
 
 
-const WorkerDetails = ({worker}) => {
+const WorkerDetails = ({worker, workersState}) => {
     const [openModal, setOpenModal] = useState(false)
     const { user } = useAuthContext();
     
     const handleDelete = async() =>{
     
-        const response = await fetch (`/api/employee/workers/${worker._id}`, {
+       let response = await fetch (`/api/employee/workers/${worker._id}`, {
         method: 'DELETE',
         headers: {
             'Content-Type':'application/json',
@@ -27,8 +25,12 @@ const WorkerDetails = ({worker}) => {
         }
       
         async function getData() {
-          let result = await fetch("/api/employee/workers/");
+          // setLoading(true);
+          let result = await fetch('/api/employee/workers',{
+            headers: {'Authorization': `Bearer ${user.token}`},
+          })
           result = await result.json();
+          workersState(result);
         }
 
 

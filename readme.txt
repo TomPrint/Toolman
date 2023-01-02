@@ -289,3 +289,8 @@ FRONTEND
 - create button in WorkerDetails.js
 - use Modal.js with descirption="pracownika"
 - it's working but need to fix to update page after delete.
+
+02/01/23 - Deleting worker (finish)
+- refresh page after delete (pass setWorkers from Worker.js to WorkerDetails and update it state after delete)
+- change class to className in views - Worker, Items, Modal etc.
+- delete shadow from ItemForm and WorkerForm
