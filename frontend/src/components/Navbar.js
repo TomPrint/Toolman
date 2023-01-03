@@ -51,10 +51,12 @@ const Navbar = () => {
                 {/* changes styling depend on the nav state */}
                 <ul className={nav ? 'fixed left-0 top-0 w-[60%] h-full border-y bg-[#2E4053] ease-in-out duration-500 md:hidden' : 'ease-in-out duration-500 fixed left-[-100%]'}>
                     <h1 className='w-full text-3xl font-bold text-[#00df9a] m-4'>Menu</h1>
-                        <li className='p-4 border-b border-gray-500'>Home</li>
-                        <li className='p-4 border-b border-gray-500'>Narzędzia</li>
-                        <li className='p-4 border-b border-gray-500'>Pracownicy</li>
-                        <li className='p-4 border-b border-gray-500'>Admin</li>
+                    <Link to='/' onClick={handleNav}><li className='p-4 border-b border-gray-500'>Home</li></Link>
+                    <Link to='/items' onClick={handleNav}><li className='p-4 border-b border-gray-500'>Narzędzia</li></Link>
+                    { isAdmin && user ?<Link to='/items/add' onClick={handleNav}><li className='p-4 border-b border-gray-500'> + Narzędzie</li></Link>: <div></div> }
+                    <Link to='/workers' onClick={handleNav}><li className='p-4 border-b border-gray-500'>Pracownicy</li></Link>
+                    { isAdmin && user ?<Link to='/workers/add' onClick={handleNav}><li className='p-4 border-b border-gray-500'> + Pracownik</li></Link>: <div></div> }
+                    { isAdmin && user ? <Link to='/admin' onClick={handleNav}><li className='p-4 border-b border-gray-500'>Admin</li></Link>: <div></div> }
                         <li className='p-4 border-b border-gray-500'>
                         {user &&(
                     <button onClick = {handleLogoutClick} className="px-2 ml-4 bg-gray-500 hover:bg-[#00df9a] transition-all duration-500 text-white text-sm rounded-full">Log out <span className="text-xs">{user.name}</span></button>)}

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import {useAuthContext} from '../hooks/useAuthContext'
+import { Link } from 'react-router-dom'
 
 function ItemForm() {
 
@@ -155,8 +156,9 @@ function ItemForm() {
              }  
             </select>
 
-            <div className="flex justify-center">
-             <button className="  bg-gray-500 hover:bg-[#00df9a] transition-all duration-500 text-white rounded py-2 px-5 m-8">Dodaj narzędzie</button>
+            <div className="flex justify-center items-center">
+             <button className="  bg-gray-500 hover:bg-[#00df9a] transition-all duration-500 text-white rounded py-2 px-5 m-2 my-8">Dodaj narzędzie</button>
+             <Link to='/items'><button className=" bg-gray-500 hover:bg-[#00df9a] transition-all duration-500 text-white rounded py-2 px-4 m-3 ">Wróć</button></Link> 
             </div>
             {error && <div className="error bg-[#960019] text-center">{error}</div>}
             {submit && <div className="bg-[#10742b] text-center">{submit}</div>}

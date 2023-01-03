@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 import {useAuthContext} from '../hooks/useAuthContext'
 //components
 import LoadingSpinner from "../components/LoadingSpinner"
@@ -42,6 +42,7 @@ const WorkerItems = () => {
     return (<div className="flex justify-center items-center "><LoadingSpinner/></div>)
   }
   return (
+    <div>
     <div className="flex justify-center h-30 max-w-[1240px] mx-auto px-2 text-white py-10">
           <div className="w-4/4 md:w-5/6">
             <h2 className="text-xl py-4 text-[#00df9a] font-bold">Narzędzia pracownika - {worker.name}</h2>
@@ -67,8 +68,13 @@ const WorkerItems = () => {
                 ))}
                 </tbody>
             </table>
-          </div> 
+          </div>
     </div>
+    <div className="flex justify-center items-center ">
+    <Link to='/workers'><button className=" bg-gray-500 hover:bg-[#00df9a] transition-all duration-500 text-white rounded py-2 px-4 m-3 ">Wróć</button></Link> 
+    </div>
+    </div>
+    
   )
 }
 
