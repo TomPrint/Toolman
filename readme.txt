@@ -296,7 +296,6 @@ FRONTEND
 - change class to className in views - Worker, Items, Modal etc.
 - delete shadow from ItemForm and WorkerForm
 
-
 02/01/23 - display images in SingleItem details.
 - update s3 policy to show images
 - create simple onClick functionality to enlarge image
@@ -307,3 +306,7 @@ FRONTEND
 - add links to mobile menu and hide menu after redirect
 - update modal css to show properly in mobile
 - add back button to ItemForm, WorkerForm, etc
+
+03/01/23 - add link to item from workeritem
+- add link to item from workerItem
+- show item purchase date in workerItem table

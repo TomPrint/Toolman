@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { Link, useParams } from "react-router-dom"
 import {useAuthContext} from '../hooks/useAuthContext'
+import { format } from 'date-fns'
 //components
 import LoadingSpinner from "../components/LoadingSpinner"
 
@@ -54,16 +55,18 @@ const WorkerItems = () => {
                     <th className="border hidden sm:table-cell">Model</th>
                     <th className="border hidden sm:table-cell">S/N</th>
                     <th className="border hidden sm:table-cell">Rok produkcji</th>
+                    <th className="border hidden sm:table-cell">Data zakupu</th>
                     </tr>
                 </thead>
                 <tbody>
                 {workerItems && workerItems.map((workeritem, workerId) => (
                   <tr key={workerId}>
-                    <td className="border">{workeritem.title}</td>
+                    <td className="border"><Link to ={`/items/${workeritem._id}`}>{workeritem.title}</Link></td>
                     <td className="border">{workeritem.producer}</td>
                     <td className="border hidden sm:table-cell">{workeritem.model}</td>
                     <td className="border hidden sm:table-cell">{workeritem.serialNumber}</td>
                     <td className="border hidden sm:table-cell">{workeritem.yearOfProduction}</td>
+                    <td className="border hidden sm:table-cell">{workeritem.purchaseDate && format(new Date(workeritem.purchaseDate),'dd/MM/yyyy')}</td>
                   </tr> 
                 ))}
                 </tbody>
