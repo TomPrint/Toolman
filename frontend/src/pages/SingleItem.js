@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { useParams, useNavigate } from "react-router-dom"
 import { format } from 'date-fns'
+import { Link } from 'react-router-dom'
 
 //components
 import LoadingSpinner from "../components/LoadingSpinner"
@@ -80,11 +81,14 @@ const SingleItem = () => {
            className="hover:opacity-75 cursor-pointer rounded overflow-hidden shadow-lg shadow-cyan-500/40 border-solid border-cyan-700 border-2"
            style={{ maxWidth: showBigSize ? '70%' : '10%', maxHeight: showBigSize ? '70%' : '10%' }}
            onClick={() => setShowBigSize(!showBigSize)}/></p>: null}
-             <div className="flex justify-center">
+             <div className="flex justify-center items-center">
               <button onClick={()=> {setOpenModal(true)}} 
-                className=" bg-gray-500 hover:bg-[#00df9a] transition-all duration-500 text-white rounded py-2 px-5 m-8 ">
+                className=" bg-gray-500 hover:bg-[#00df9a] transition-all duration-500 text-white rounded py-2 px-5 m-2 my-8 ">
                   Usuń narzędzie
               </button>
+
+              <Link to='/items'><button className=" bg-gray-500 hover:bg-[#00df9a] transition-all duration-500 text-white rounded py-2 px-4 m-3 ">Wróć</button></Link> 
+
               {openModal && <Modal handleDelete={handleDelete} setOpenModal={setOpenModal} description="narzędzie"/>}
             </div> 
       </div>

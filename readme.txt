@@ -303,3 +303,7 @@ FRONTEND
 - conditionally show image if it is avaiable for an item, otherwise display nothing
 - display image for items.js if item.image is available
 
+03/01/23 - mobile menu + back button
+- add links to mobile menu and hide menu after redirect
+- update modal css to show properly in mobile
+- add back button to ItemForm, WorkerForm, etc
