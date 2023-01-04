@@ -151,6 +151,23 @@ const updateItem = async (req,res) => {
   res.status(200).json(item)
 }
 
+const findItems = async (req,res) => {
+  const { key } = req.params 
+  const items = await Item.find ({
+    "$or":[
+      {
+        title: {$regex: new RegExp(key, "i") },
+      },
+      {
+        producer: {$regex: new RegExp(key, "i") },
+      },
+    ]
+  })
+  if(items.length<1){
+    return res.status(404).json({error: 'No such item'})
+  }else {res.status(200).json(items)}
+}
+
 
 
 
@@ -161,4 +178,5 @@ module.exports = {
     getItem,
     deleteItem,
     updateItem,
+    findItems,
 }

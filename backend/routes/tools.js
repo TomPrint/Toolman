@@ -5,7 +5,8 @@ const {
    getItems,
    getItem,
    deleteItem,
-   updateItem
+   updateItem,
+   findItems
    } = require('../controllers/itemController')
 
 const { getWorkers } = require('../controllers/workerController')
@@ -25,10 +26,14 @@ router.get("/items/:id", getItem)
 // POST a new item
 router.post("/items/add", createItem, getWorkers)
 
-// DELETE a item
+// DELETE an item
 router.delete("/items/:id", deleteItem)
 
-// UPDATE a item
+// UPDATE an item
 router.patch("/:id", updateItem)
+
+//FIND an item
+router.get("/items/search/:key", findItems)
+
 
 module.exports = router;

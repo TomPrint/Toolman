@@ -310,3 +310,8 @@ FRONTEND
 03/01/23 - add link to item from workeritem
 - add link to item from workerItem
 - show item purchase date in workerItem table
+
+04/01/23 - backend for item searchbar
+- create root for searchbar
+- crate findItems in itemController
+- tests in postman
