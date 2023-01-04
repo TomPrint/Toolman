@@ -79,7 +79,7 @@ const SingleItem = () => {
             {/* If no picture, don't show picture tag */}
              {item.image ?<p>Zdjęcie:<img src={item.image} alt="zdjęcie" 
            className="hover:opacity-75 cursor-pointer rounded overflow-hidden shadow-lg shadow-cyan-500/40 border-solid border-cyan-700 border-2"
-           style={{ maxWidth: showBigSize ? '70%' : '10%', maxHeight: showBigSize ? '70%' : '10%' }}
+           style={{ maxWidth: showBigSize ? '70%' : '20%', maxHeight: showBigSize ? '70%' : '20%' }}
            onClick={() => setShowBigSize(!showBigSize)}/></p>: null}
              <div className="flex justify-center items-center">
               <button onClick={()=> {setOpenModal(true)}} 

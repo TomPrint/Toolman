@@ -14,6 +14,7 @@ function ItemForm() {
     const [yearOfProduction, setYearOfProduction] = useState('')
     const [workersList, setWorkersList] = useState([])
     const [atEmployee, setAtEmployee] = useState(null)
+    const [image, setImage] = useState(null);
     const [error, setError] = useState(null)
     const [submit, setSubmit] = useState(null)
     const {user} = useAuthContext()
@@ -42,47 +43,47 @@ function ItemForm() {
 
     //POST after submit button
     const handleSubmit = async (e) => {
-        e.preventDefault()
-        const item = {
-            title,
-            model,
-            producer,
-            serialNumber,
-            yearOfProduction,
-            atEmployee,
-            seller,
-            warrantyDate,
-            purchaseDate,
-        }
-        const response = await fetch ('/api/tools/items/add', {
-            method: 'POST',
-            body: JSON.stringify(item),
-            headers: {
-                'Content-Type':'application/json',
-                'Authorization': `Bearer ${user.token}`
-            }
-        })
-        // we get back response as json and storing it in json
-        const json = await response.json()
+        e.preventDefault();
+        const data = new FormData();
+        data.append("image", image);
+        data.append("title", title);
+        data.append("model", model);
+        data.append("producer", producer);
+        data.append("serialNumber", serialNumber);
+        data.append("yearOfProduction", yearOfProduction);
+        if (atEmployee !== null) {
+            data.append("atEmployee", atEmployee);
+          }
+        data.append("seller", seller);
+        data.append("warrantyDate", warrantyDate);
+        data.append("purchaseDate", purchaseDate);
+        const response = await fetch("/api/tools/items/add", {
+          method: "POST",
+          body: data,
+          headers: {
+            "Authorization": `Bearer ${user.token}`,
+          },
+        });
+        const json = await response.json();
         if (!response.ok) {
-            setError(json.error)
-            setSubmit(null)
+          setError(json.error);
+          setSubmit(null);
         }
         if (response.ok) {
-            setProducer('')
-            setSeller('')
-            setWarrantyDate('')
-            setPurchaseDate('')
-            setModel('')
-            setTitle('')
-            setSerialNumber('')
-            setYearOfProduction('')
-            setError(null)
-            setAtEmployee(null)
-            console.log('new item added', json)
-            setSubmit(`Pomyślnie dodano narzędzie ${item.title}`)
+          setTitle("");
+          setModel("");
+          setProducer("");
+          setSerialNumber("");
+          setYearOfProduction("");
+          setAtEmployee(null);
+          setSeller("");
+          setWarrantyDate("");
+          setPurchaseDate("");
+          setError(null);
+          console.log("new item added", json);
+          setSubmit(`Dodano narzędzie: ${title}`);
         }
-    }
+      };
 
 
     return ( 
@@ -155,6 +156,13 @@ function ItemForm() {
             ))
              }  
             </select>
+
+            <label className="block text-gray-500 text-sm py-2">Zdjęcie:</label>
+            <input
+                type="file"
+                name="image"
+                onChange={(e) => setImage(e.target.files[0])}
+            />
 
             <div className="flex justify-center items-center">
              <button className="  bg-gray-500 hover:bg-[#00df9a] transition-all duration-500 text-white rounded py-2 px-5 m-2 my-8">Dodaj narzędzie</button>

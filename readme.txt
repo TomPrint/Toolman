@@ -315,3 +315,7 @@ FRONTEND
 - create root for searchbar
 - crate findItems in itemController
 - tests in postman
+
+04/01/23 - update ItemForm to accept image file
+-change ItemForm to accept image file when item is created
+-update limits for multer to restrict bigger files (to be finished - need an error info!)

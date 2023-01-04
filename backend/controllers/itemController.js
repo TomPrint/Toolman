@@ -6,7 +6,9 @@ const { uploadToS3 } = require('../s3')
 
 //! Multer configuration
 const multerConfig = {
-  limits: 1024 * 1024 * 5,
+  limits: {
+    fileSize: 1024 * 1024 * 2, // 5 megabytes
+  },
   fileFilter: function (req, file, done) {
     if (file.mimetype === "image/jpg"|| file.mimetype === "image/png" || file.mimetype ==='image/jpeg') {
       done(null, true)
