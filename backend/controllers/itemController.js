@@ -59,7 +59,7 @@ const createItem = async (req, res) => {
           purchaseDate,
           image: result.Location,
         })
-        //if not image show nothing
+        //if no image, don't show anything
       } else {
         item = await Item.create({
           title,

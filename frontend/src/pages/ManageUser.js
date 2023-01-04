@@ -43,7 +43,7 @@ function ManageUser() {
               <LoadingSpinner />
             </div>
           ) : (
-            <div className=" overflow-x-auto relative shadow-md sm:rounded-lg">
+            <div className="shadow-md sm:rounded-lg">
               <table className="w-full text-sm text-center text-white">
                 <thead className="text-xs text-white uppercase bg-rgba(6, 18, 36, 0.945)">
                   <tr>
