@@ -11,21 +11,25 @@ const multerConfig = {
   },
   fileFilter: function (req, file, done) {
     if (file.mimetype === "image/jpg"|| file.mimetype === "image/png" || file.mimetype ==='image/jpeg') {
-      done(null, true)
+      done(null, true);
+      
     } else {
-      done("Niewłaściwy plik, użyj .jpg .jpeg .png", false)
+      const error = new Error()
+      error.message = "Use only .jpg .jpeg .png files";
+      done(error, false);
     }
   }
 }
 const upload = multer(multerConfig)
 
-
-
 //! CREATE new item 
 const createItem = async (req, res) => {
   // multer middleware that handles file upload
-  upload.single("image")(req, res, async () => {
-    //destructuring form req.body
+  upload.single("image")(req, res, async (error) => {
+    if (error) {
+      return res.status(400).json({ error: error.message });
+    }
+
     const {
       title,
       model,
@@ -39,9 +43,13 @@ const createItem = async (req, res) => {
       image,
     } = req.body
 
-    if (!title){
-      return res.status(400).json({error:'Błąd! Wymagane jest podanie chociaż nazwy narzędzia.'})
+    if (!title) {
+      return res.status(400).json({error: 'Błąd! Wymagane jest podanie chociaż nazwy narzędzia.'});
     }
+    
+
+
+    
 
     //try-catch to create new Item and catch error. Add "await" because of "async" - Js promise above
     try {
