@@ -16,6 +16,7 @@ import ManageUser from "./pages/ManageUser";
 import { useAuthContext } from './hooks/useAuthContext'
 import WorkerItems from "./pages/WorkerItems";
 import SingleItem from "./pages/SingleItem";
+import ItemUpdate from "./components/ItemUpdate"
 import { useIsAdmin } from './hooks/useAdmin'
 
 
@@ -37,6 +38,7 @@ function App() {
             <Route path="/items" element={user ? <Items /> : <Navigate to="/login" />} />
             <Route path="/items/:itemId" element={isAdmin ? <SingleItem /> : <Navigate to="/login" />} />
             <Route path="/items/add" element={isAdmin ? <ItemForm /> : <Navigate to="/login" />} />
+            <Route path="/items/update/:itemId" element={isAdmin ? <ItemUpdate /> : <Navigate to="/login" />} />
             <Route path="/workers" element={user ? <Workers /> : <Navigate to="/login" />} />
             <Route path="/workers/add" element={isAdmin ? <WorkerForm /> : <Navigate to="/login" />} />
             <Route path="/workers/:workerId/items" element={user ? <WorkerItems /> : <Navigate to="/login" />} />

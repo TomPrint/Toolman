@@ -47,7 +47,7 @@ const WorkerItems = () => {
     <div className="flex justify-center h-30 max-w-[1240px] mx-auto px-2 text-white py-10">
           <div className="w-4/4 md:w-5/6">
             <h2 className="text-xl py-4 text-[#00df9a] font-bold">Narzędzia pracownika - {worker.name}</h2>
-            <table class="min-w-full border text-center p-4">
+            <table className="min-w-full border text-center p-4">
                 <thead className="border-b p-4 bg-[#00df9a] text-xl">
                     <tr>
                     <th>Nazwa:</th>

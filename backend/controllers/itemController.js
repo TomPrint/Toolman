@@ -141,7 +141,8 @@ const updateItem = async (req,res) => {
     return res.status(404).json({error: 'No such item'})
   }
   // update the item found by id, as a second argument we pass new data frome req.body
-  const item = await Item.findOneAndUpdate({_id: id }, {
+  const item = await Item.updateOne({_id: id }, {
+    
     // req.body is an object so we spread that object into properties by ...
     ...req.body
   })

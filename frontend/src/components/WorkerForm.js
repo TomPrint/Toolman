@@ -66,7 +66,7 @@ const WorkerForm = () => {
             value={position}
              />
 
-            <div class="flex justify-center items-center">
+            <div clasName="flex justify-center items-center">
              <button className="bg-gray-500 hover:bg-[#00df9a] transition-all duration-500 text-white rounded py-2 px-5 m-2 my-8"> Dodaj pracownika</button>
              <Link to='/workers'><button className=" bg-gray-500 hover:bg-[#00df9a] transition-all duration-500 text-white rounded py-2 px-4 m-3 ">Wróć</button></Link> 
             </div>

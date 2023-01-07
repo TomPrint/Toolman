@@ -319,3 +319,10 @@ FRONTEND
 04/01/23 - update ItemForm to accept image file
 -change ItemForm to accept image file when item is created
 -update limits for multer to restrict bigger files (to be finished - need an error info!)
+
+08/01/23 - update an Item with prefill form
+- update backend with PUT method and root for update an item
+- update App.js to pass id
+- create ItemUpdate.js
+- stylling correct in WorkerItems, SingleItem, WorkerForm, ItemDetail
+=X can't update Image - need to fix it.

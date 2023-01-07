@@ -30,7 +30,7 @@ router.post("/items/add", createItem, getWorkers)
 router.delete("/items/:id", deleteItem)
 
 // UPDATE an item
-router.patch("/:id", updateItem)
+router.put("/items/update/:id", updateItem)
 
 //FIND an item
 router.get("/items/search/:key", findItems)
