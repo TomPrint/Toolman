@@ -319,3 +319,7 @@ FRONTEND
 04/01/23 - update ItemForm to accept image file
 -change ItemForm to accept image file when item is created
 -update limits for multer to restrict bigger files (to be finished - need an error info!)
+
+07/01/23 - update multer limts and error messages
+-update multer file limit logic
+-update error logic for backend and setup erorr for frontend

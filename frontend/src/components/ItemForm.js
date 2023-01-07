@@ -41,6 +41,18 @@ function ItemForm() {
         setAtEmployee(event.target.value);
     }
 
+    const handleUpload = (event) => {
+      const file = event.target.files[0];
+      if (file.size > 2048000) { // 2 megabytes
+        setError("Plik jest za duży, użyj pliku o rozmiarze do 2MB");
+      } else if (file.type !== "image/jpg" && file.type !== "image/png" && file.type !== "image/jpeg") {
+        setError("Zły format pliku, użyj .jpeg, .jpg, .png");
+      } else {
+        setError(null);
+      }
+      setImage(file);
+    };
+
     //POST after submit button
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -66,7 +78,7 @@ function ItemForm() {
         });
         const json = await response.json();
         if (!response.ok) {
-          setError(json.error);
+          setError(json.error)
           setSubmit(null);
         }
         if (response.ok) {
@@ -157,12 +169,17 @@ function ItemForm() {
              }  
             </select>
 
-            <label className="block text-gray-500 text-sm py-2">Zdjęcie:</label>
-            <input
-                type="file"
-                name="image"
-                onChange={(e) => setImage(e.target.files[0])}
-            />
+            <label className="block text-gray-500 text-sm py-2" htmlFor="image">
+          Zdjęcie:
+        </label>
+        <input
+          type="file"
+          name="image"
+          id="image"
+          accept=".jpg,.jpeg,.png"
+          onChange={handleUpload}
+          className="mb-1 text-gray-500 leading-tight focus:outline-none focus:shadow-outline"
+        />
 
             <div className="flex justify-center items-center">
              <button className="  bg-gray-500 hover:bg-[#00df9a] transition-all duration-500 text-white rounded py-2 px-5 m-2 my-8">Dodaj narzędzie</button>

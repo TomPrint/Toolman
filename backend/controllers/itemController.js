@@ -4,22 +4,27 @@ const mongoose = require('mongoose')
 const multer = require('multer')
 const { uploadToS3 } = require('../s3')
 
-//! Multer configuration
 const multerConfig = {
   limits: {
-    fileSize: 1024 * 1024 * 2, // 5 megabytes
+    fileSize: 2048576, // 2 megabytes
   },
   fileFilter: function (req, file, done) {
-    if (file.mimetype === "image/jpg"|| file.mimetype === "image/png" || file.mimetype ==='image/jpeg') {
-      done(null, true);
-      
-    } else {
-      const error = new Error()
-      error.message = "Use only .jpg .jpeg .png files";
-      done(error, false);
+    if (file.mimetype !== "image/jpg" && file.mimetype !== "image/png" && file.mimetype !== "image/jpeg") {
+      const error = new Error("Zły format pliku, użyj .jpeg, .jpg, .png");
+      return done(error, false);
     }
-  }
-}
+
+    const fileSize = parseInt(req.headers['content-length']);
+    if (fileSize > 2048576) {
+      const error = new Error('Plik za duży, użyj pliku do 2MB');
+      console.log(fileSize)
+      return done(error, false);
+    }
+
+    return done(null, true);
+  },
+};
+
 const upload = multer(multerConfig)
 
 //! CREATE new item 
@@ -27,7 +32,7 @@ const createItem = async (req, res) => {
   // multer middleware that handles file upload
   upload.single("image")(req, res, async (error) => {
     if (error) {
-      return res.status(400).json({ error: error.message });
+      return res.status(400).json({ error: error.message});
     }
 
     const {
@@ -47,10 +52,6 @@ const createItem = async (req, res) => {
       return res.status(400).json({error: 'Błąd! Wymagane jest podanie chociaż nazwy narzędzia.'});
     }
     
-
-
-    
-
     //try-catch to create new Item and catch error. Add "await" because of "async" - Js promise above
     try {
       let item = {}
@@ -71,6 +72,7 @@ const createItem = async (req, res) => {
         })
         //if no image, don't show anything
       } else {
+        
         item = await Item.create({
           title,
           model,
@@ -81,6 +83,7 @@ const createItem = async (req, res) => {
           seller,
           warrantyDate,
           purchaseDate,
+          
         })
       }
 
