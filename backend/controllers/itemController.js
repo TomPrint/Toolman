@@ -6,7 +6,7 @@ const { uploadToS3 } = require('../s3')
 
 const multerConfig = {
   limits: {
-    fileSize: 2048576, // 2 megabytes
+    fileSize: 1048576, // 1 megabyte
   },
   fileFilter: function (req, file, done) {
     if (file.mimetype !== "image/jpg" && file.mimetype !== "image/png" && file.mimetype !== "image/jpeg") {
@@ -15,9 +15,9 @@ const multerConfig = {
     }
 
     const fileSize = parseInt(req.headers['content-length']);
-    if (fileSize > 2048576) {
-      const error = new Error('Plik za duży, użyj pliku do 2MB');
-      console.log(fileSize)
+    if (fileSize > 1048576) {
+      const error = new Error('Plik za duży, użyj pliku do 1MB');
+      // console.log(fileSize)
       return done(error, false);
     }
 
