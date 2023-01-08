@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import {AiOutlineClose} from "react-icons/ai"
 
 // components
 import WorkerDetails from "../components/WorkerDetails"
@@ -8,6 +9,7 @@ import {useAuthContext} from '../hooks/useAuthContext'
 const Workers = () => {
     const [workers, setWorkers] = useState(null)
     const [loading, setLoading]=useState(false)
+    const [search, setSearch] = useState("")
     const {user} = useAuthContext()
 
   useEffect(() => {
@@ -29,9 +31,35 @@ const Workers = () => {
   }
   }, [user])
 
+  // searchTerm updates with current value of input element
+  const handleSearch = (event) => {
+    setSearch(event.target.value) 
+  }
+
+    // clears searchbar input
+    const clearSearch = () => {
+      setSearch("") 
+    }
+
+    // returns filtered workers
+  const filteredWorkers = (workers, search) => {
+    return workers.filter((worker) => worker.name.includes(search))
+  }
+
   return (
     <div>
     <h1 className="flex justify-center py-4 text-xl font-bold">Wszyscy pracownicy: </h1>
+    <div className="flex justify-center items-center h-30 max-w-[1240px] mx-auto px-4 text-white">
+        <input
+        className='text-black'
+          type="text"
+          value={search}
+          onChange={handleSearch}
+          placeholder="Wyszukaj pracownika..."
+        />
+          {search !== "" && (<div className="ml-2 cursor-pointer" onClick={clearSearch}>
+            <AiOutlineClose /> </div>)}
+      </div>
     { loading ? (<div className="flex justify-center items-center "><LoadingSpinner/></div>) :
       <div className="flex justify-between items-center h-30 max-w-[1240px] mx-auto px-4 text-white">
       <div className="p-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-7">
@@ -39,9 +67,8 @@ const Workers = () => {
         {/* chcecking are there any workers and if so map them */}
         {/* using WorkerDetails from components to show template */}
         {/* passing worker id, passing worker and passing setWorkers to update it after delete  */}
-        {workers && workers.map(worker => (
-          <WorkerDetails key={worker._id} worker={worker} workersState={setWorkers}/>
-        ))}
+        {workers ? (filteredWorkers(workers, search).map((worker) => (<WorkerDetails key={worker._id} worker={worker} />))) : <div></div>}
+     
       </div>
       </div>
     }
