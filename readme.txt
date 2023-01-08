@@ -330,3 +330,7 @@ FRONTEND
 - create ItemUpdate.js
 - stylling correct in WorkerItems, SingleItem, WorkerForm, ItemDetail
 =X can't update Image - need to fix it.
+
+08/01/23 - create useFetch hook
+- create useFetch hook to GET data
+- update Items.js using useFetch hook
