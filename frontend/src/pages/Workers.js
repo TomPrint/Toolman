@@ -43,7 +43,8 @@ const Workers = () => {
 
     // returns filtered workers
   const filteredWorkers = (workers, search) => {
-    return workers.filter((worker) => worker.name.includes(search))
+    search = search.toLowerCase();
+    return workers.filter((worker) => worker.name.toLowerCase().includes(search))
   }
 
   return (

@@ -1,5 +1,5 @@
 
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import {AiOutlineClose} from "react-icons/ai"
 
 // components
@@ -27,7 +27,8 @@ const Items = () => {
   }
 // returns filtered items
   const filteredItems = (data, search) => {
-    return data.filter((item) => item.title.includes(search))
+    search = search.toLowerCase()
+    return data.filter((item) => item.title.toLowerCase().includes(search))
   }
 
   return (
