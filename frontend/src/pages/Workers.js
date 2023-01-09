@@ -1,50 +1,32 @@
-import { useEffect, useState } from "react"
+import {useState } from "react"
 import {AiOutlineClose} from "react-icons/ai"
 
 // components
 import WorkerDetails from "../components/WorkerDetails"
 import LoadingSpinner from "../components/LoadingSpinner"
-import {useAuthContext} from '../hooks/useAuthContext'
+
+//import useFetch hook to GET all items
+import useFetch from "../hooks/useFetch";
 
 const Workers = () => {
-    const [workers, setWorkers] = useState(null)
-    const [loading, setLoading]=useState(false)
+    const url = '/api/employee/workers'
+    const { loading, data } = useFetch(url);
     const [search, setSearch] = useState("")
-    const {user} = useAuthContext()
-
-  useEffect(() => {
-    const fetchWorkers = async () => {
-      setLoading(true)
-      const response = await fetch('/api/employee/workers',{
-        headers: {'Authorization': `Bearer ${user.token}`},
-      })
-      const json = await response.json()
-      // to get an array of objet
-      if (response.ok) {
-        setWorkers(json)
-        setLoading(false)
-      }
-    }
-    // fire a function 
-    if (user){
-    fetchWorkers()
-  }
-  }, [user])
 
   // searchTerm updates with current value of input element
   const handleSearch = (event) => {
     setSearch(event.target.value) 
   }
 
-    // clears searchbar input
-    const clearSearch = () => {
-      setSearch("") 
-    }
+  // clears searchbar input
+  const clearSearch = () => {
+    setSearch("") 
+  }
 
-    // returns filtered workers
-  const filteredWorkers = (workers, search) => {
+  // returns filtered workers
+  const filteredWorkers = (data, search) => {
     search = search.toLowerCase();
-    return workers.filter((worker) => worker.name.toLowerCase().includes(search))
+    return data.filter((worker) => worker.name.toLowerCase().includes(search))
   }
 
   return (
@@ -68,7 +50,7 @@ const Workers = () => {
         {/* chcecking are there any workers and if so map them */}
         {/* using WorkerDetails from components to show template */}
         {/* passing worker id, passing worker and passing setWorkers to update it after delete  */}
-        {workers ? (filteredWorkers(workers, search).map((worker) => (<WorkerDetails key={worker._id} worker={worker} />))) : <div></div>}
+        {data ? (filteredWorkers(data, search).map((worker) => (<WorkerDetails key={worker._id} worker={worker} />))) : <div></div>}
      
       </div>
       </div>

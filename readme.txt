@@ -339,3 +339,6 @@ FRONTEND
 - ceareate search bar for Items.js and Workers.js
 - update itemController with max image size 1 MB
 
+09/01/23 - code optimalization
+- useFetch hook in Workers.js to get all workers
+- update search with above hook
