@@ -342,3 +342,9 @@ FRONTEND
 09/01/23 - code optimalization
 - useFetch hook in Workers.js to get all workers
 - update search with above hook
+
+10/01/23 - PDF report for WorkerItem
+- npm install jspdf
+- npm install htnl2canvas
+- create pdf button with react icons
+- create pdf export function with html2canvas & styling
