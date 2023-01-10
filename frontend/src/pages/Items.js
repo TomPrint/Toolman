@@ -6,14 +6,16 @@ import {AiOutlineClose} from "react-icons/ai"
 import ItemDetails from "../components/ItemDetails"
 import LoadingSpinner from "../components/LoadingSpinner"
 
-//useFetch hook to GET all items
+//import useFetch hook to GET all items
 import useFetch from "../hooks/useFetch";
 
 const Items = () => {
 
-  
+  //use useFetch hook to GET all items
   const url = '/api/tools/items'
   const { loading, data } = useFetch(url);
+  
+  // useStete for setSearch and search
   const [search, setSearch] = useState("")
  
   // search updates with current value of input element
@@ -25,7 +27,8 @@ const Items = () => {
   const clearSearch = () => {
     setSearch("") 
   }
-// returns filtered items
+  
+  // returns filtered items
   const filteredItems = (data, search) => {
     search = search.toLowerCase()
     return data.filter((item) => item.title.toLowerCase().includes(search))
