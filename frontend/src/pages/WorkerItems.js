@@ -12,22 +12,28 @@ import { useRef } from 'react'
 
 
 const WorkerItems = () => {
-  // setTimeout(1000)
+
   //pass workerId parameter from App.js form Route (must be the same name of id param)
   const { workerId} = useParams();
   const {user} = useAuthContext()
   const [workerItems, setWorkerItems] = useState(null)
   const [worker, setWorker] = useState()
-  const printRef = useRef()
   
+  // import const for PDF create with jspdf and html2canvas
+  const printRef = useRef()
+  const current = new Date();
+  const date = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
+  
+  // handle function that is creating image of selected divs by useRef and then creating pdf.
   const handleDownloadPdf = async () => {
     
     const pdf = new jsPDF();
     const element = printRef.current;
-  
+    // style changes using querySelector for printing on white background
     const canvas = await html2canvas(element,{onclone: function(document) {
-      {document.querySelector('.druk').style.color = '#000000';}
-      {document.querySelector('.druk').style.fontWeight = '900';}
+      document.querySelector('.druk').style.color = '#000000';
+      document.querySelector('.druk').style.fontWeight = '900';
+      document.querySelector('.druk2').style.color = '#000000';
       }})
     const data = canvas.toDataURL('image/png');
     const imgProperties = pdf.getImageProperties(data);
@@ -35,10 +41,8 @@ const WorkerItems = () => {
     const pdfHeight =
       (imgProperties.height * pdfWidth) / imgProperties.width;
     pdf.addImage(data, 'PNG', 0, 0, pdfWidth, pdfHeight);
-    pdf.save(`Stan narzędzi ${(worker.name)}.pdf`);
-   
+    pdf.save(`Stan narzędzi - ${(worker.name)}- ${date}.pdf`);
   };
-  
   
   useEffect(() => {
     const fetchWorkerItems = async () => {
@@ -57,7 +61,6 @@ const WorkerItems = () => {
       if (response2.ok){
         setWorker(json2)
       }
-
     }
     // fire a function
     if (user){  
@@ -71,41 +74,47 @@ const WorkerItems = () => {
   }
   return (
     <div>
-    <div ref={printRef} className="druk flex justify-center h-30 max-w-[1240px] mx-auto px-2 text-white py-10">
-          <div className="w-4/4 md:w-5/6">
-            <h2 className="text-xl py-4 text-[#00df9a] font-bold">Narzędzia pracownika - {worker.name}</h2>
-            <table className="min-w-full border text-center p-4">
-                <thead className="p-4 bg-[#00df9a] text-xl">
-                    <tr>
-                      <th className="border p-2">Nazwa</th>
-                      <th className="border">Producent</th>
-                      <th className="border hidden sm:table-cell">Model</th>
-                      <th className="border hidden sm:table-cell">S/N</th>
-                      <th className="border hidden sm:table-cell">Rok produkcji</th>
-                      <th className="border hidden sm:table-cell">Data zakupu</th>
-                    </tr>
-                </thead>
-                <tbody>
-                {workerItems && workerItems.map((workeritem, workerId) => (
-                  <tr key={workerId}>
-                    <td className="border p-2"><Link to ={`/items/${workeritem._id}`}>{workeritem.title}</Link></td>
-                    <td className="border">{workeritem.producer}</td>
-                    <td className="border hidden sm:table-cell">{workeritem.model}</td>
-                    <td className="border hidden sm:table-cell">{workeritem.serialNumber}</td>
-                    <td className="border hidden sm:table-cell">{workeritem.yearOfProduction}</td>
-                    <td className="border hidden sm:table-cell">{workeritem.purchaseDate && format(new Date(workeritem.purchaseDate),'dd/MM/yyyy')}</td>
-                  </tr> 
-                ))}
-                </tbody>
-            </table>
-          </div>
+      <div ref={printRef} className="druk flex justify-center h-30 max-w-[1240px] mx-auto px-2 text-white py-10">
+            <div className="w-4/4 md:w-5/6">
+              <h2 className="text-xl py-4 text-[#00df9a] font-bold">Narzędzia pracownika - {worker.name}</h2>
+              <table className="min-w-full border text-center p-4">
+                  <thead className="p-4 bg-[#00df9a] text-xl">
+                      <tr>
+                        <th className="border p-2">Nazwa</th>
+                        <th className="border">Producent</th>
+                        <th className="border hidden sm:table-cell">Model</th>
+                        <th className="border hidden sm:table-cell">S/N</th>
+                        <th className="border hidden sm:table-cell">Rok produkcji</th>
+                        <th className="border sm:table-cell">Data zakupu</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                  {workerItems && workerItems.map((workeritem, workerId) => (
+                    <tr key={workerId}>
+                      <td className="border p-2"><Link to ={`/items/${workeritem._id}`}>{workeritem.title}</Link></td>
+                      <td className="border">{workeritem.producer}</td>
+                      <td className="border hidden sm:table-cell">{workeritem.model}</td>
+                      <td className="border hidden sm:table-cell">{workeritem.serialNumber}</td>
+                      <td className="border hidden sm:table-cell">{workeritem.yearOfProduction}</td>
+                      <td className="border sm:table-cell">{workeritem.purchaseDate && format(new Date(workeritem.purchaseDate),'dd/MM/yyyy')}</td>
+                    </tr> 
+                  ))}
+                  </tbody>
+              </table>
+              <div className="druk2 text-whie p-1">Data utworzenia: {date}</div>
+            </div>
+      </div>
+      <div className="flex justify-center items-center ">
+        <Link to='/workers'>
+          <button className=" bg-gray-500 hover:bg-[#00df9a] transition-all duration-500 text-white rounded py-2 px-4 m-3 ">
+            Wróć
+          </button>
+        </Link>
+        <button onClick={()=> {handleDownloadPdf()}}  className=" bg-gray-500 hover:bg-[#00df9a] transition-all duration-500 text-white rounded py-2 px-4 m-3 ">
+          <span className='flex'><AiOutlinePrinter size={20}/>PDF</span>
+        </button>
+      </div>
     </div>
-    <div className="flex justify-center items-center ">
-    <Link to='/workers'><button className=" bg-gray-500 hover:bg-[#00df9a] transition-all duration-500 text-white rounded py-2 px-4 m-3 ">Wróć</button></Link>
-    <button onClick={()=> {handleDownloadPdf()}}  className=" bg-gray-500 hover:bg-[#00df9a] transition-all duration-500 text-white rounded py-2 px-4 m-3 "><span className='flex'><AiOutlinePrinter size={20}/>PDF</span></button>
-    </div>
-    </div>
-    
   )
 }
 
