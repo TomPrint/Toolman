@@ -4,12 +4,14 @@ import { Link } from 'react-router-dom'
 import { useParams, useNavigate } from "react-router-dom"
 import { format } from 'date-fns'
 
-
-
 function ItemForm() {
-
+    //useNavigate const
     const navigate = useNavigate()
-
+    //useAuthContext const 
+    const {user} = useAuthContext()
+    //useParams const
+    const { itemId } = useParams()
+     //useState const
     const [title, setTitle] = useState('')
     const [producer, setProducer] = useState('')
     const [seller, setSeller] = useState('')
@@ -24,10 +26,7 @@ function ItemForm() {
     const [image, setImage] = useState(null);
     const [error, setError] = useState(null)
     const [submit, setSubmit] = useState(null)
-    const {user} = useAuthContext()
-    const { itemId } = useParams()
-    
-    
+   
     //Use effect to get worker data. We use workersList and setWorkersList to grab them
     useEffect(()=>{
         const fetchWorkers = async () =>{
@@ -67,8 +66,6 @@ function ItemForm() {
               setAtEmployee(json.atEmployee.id)
               setEmployeeName(json.atEmployee.name)
             }
-            
-           
           }
         }
         // fire a function 
@@ -197,13 +194,6 @@ function ItemForm() {
                    (<option key={worker._id} value={worker._id}>{worker.name}</option>)
               })}
             </select>
-
-            {/* <label className="block text-gray-500 text-sm py-2">Zdjęcie:</label>
-            <input
-                type="file"
-                name="image"
-                onChange={(e) => setImage(e.target.files[0])}
-            /> */}
 
             <div className="flex justify-center items-center">
              <button className="  bg-gray-500 hover:bg-[#00df9a] transition-all duration-500 text-white rounded py-2 px-5 m-2 my-8">Aktualizuj</button>
