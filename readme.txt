@@ -342,3 +342,7 @@ FRONTEND
 09/01/23 - code optimalization
 - useFetch hook in Workers.js to get all workers
 - update search with above hook
+
+12/01/23 - update token expiration policy 
+- update token expiration policy to logout user on token expiration
+=X client does not get error message when expiration and logout happen
