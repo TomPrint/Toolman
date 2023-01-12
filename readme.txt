@@ -346,3 +346,16 @@ FRONTEND
 12/01/23 - update token expiration policy 
 - update token expiration policy to logout user on token expiration
 =X client does not get error message when expiration and logout happen
+
+10/01/23 - PDF report for WorkerItem
+- npm install jspdf
+- npm install htnl2canvas
+- create pdf button with react icons
+- create pdf export function with html2canvas & styling
+
+11/01/23 - fix bug in ItemForm / finished updateItem
+ - bug was after triger onChange and chose again no worker
+ - updateItem - fill in atEmployee
+ - updateItem - fixed same bug as in ItemForm
+ - add some more styling for PDF print in workerItem
+ - add some code styling in WorkerForm
