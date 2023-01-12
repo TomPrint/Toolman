@@ -10,7 +10,7 @@ import useFetch from "../hooks/useFetch";
 
 const Workers = () => {
     const url = '/api/employee/workers'
-    const { loading, data } = useFetch(url);
+    const { loading, data, setData } = useFetch(url);
     const [search, setSearch] = useState("")
 
   // searchTerm updates with current value of input element
@@ -50,7 +50,7 @@ const Workers = () => {
         {/* chcecking are there any workers and if so map them */}
         {/* using WorkerDetails from components to show template */}
         {/* passing worker id, passing worker and passing setWorkers to update it after delete  */}
-        {data ? (filteredWorkers(data, search).map((worker) => (<WorkerDetails key={worker._id} worker={worker} />))) : <div></div>}
+        {data ? (filteredWorkers(data, search).map((worker) => (<WorkerDetails key={worker._id} worker={worker} workersState={setData} />))) : <div></div>}
      
       </div>
       </div>

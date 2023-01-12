@@ -359,3 +359,9 @@ FRONTEND
  - updateItem - fixed same bug as in ItemForm
  - add some more styling for PDF print in workerItem
  - add some code styling in WorkerForm
+
+12/01/23 - fix bug with add worker
+  - fix bug with add worker. Bug was after implementation useFetch and add search for workers
+  - update useFetch to return setData
+  - code descirption in ItemUpdate
+  - Workers.js update to pass correct data to WorkersDetail.js
