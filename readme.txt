@@ -359,3 +359,7 @@ FRONTEND
  - updateItem - fixed same bug as in ItemForm
  - add some more styling for PDF print in workerItem
  - add some code styling in WorkerForm
+
+ 13/01/23 - add autologout for inactive users
+ - add autologout if 2min inactive
+ 
