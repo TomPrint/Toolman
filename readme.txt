@@ -360,8 +360,14 @@ FRONTEND
  - add some more styling for PDF print in workerItem
  - add some code styling in WorkerForm
 
+
 12/01/23 - fix bug with add worker
   - fix bug with add worker. Bug was after implementation useFetch and add search for workers
   - update useFetch to return setData
   - code descirption in ItemUpdate
   - Workers.js update to pass correct data to WorkersDetail.js
+
+ 13/01/23 - add autologout for inactive users
+ - add autologout if 2min inactive
+ 
+
