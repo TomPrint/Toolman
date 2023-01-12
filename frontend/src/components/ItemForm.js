@@ -38,7 +38,11 @@ function ItemForm() {
     
     // on select change we match value from event target to setAtEployee
     const handleChange = (event) => {
+      if (event.target.value !== 'Bez przypisania') {  
         setAtEmployee(event.target.value);
+      } else {
+        setAtEmployee(null)
+      }
     }
 
     const handleUpload = (event) => {
@@ -161,7 +165,7 @@ function ItemForm() {
 
             <label className="block text-gray-500 text-sm py-2">Przypisz do pracownika: </label>
             <select className="text-black w-[100%]" onChange={handleChange}> 
-            <option> - Wybierz pracownika - </option>
+            <option>Bez przypisania</option>
             {/* we map on workersList to show the names and grab id as a value */}
             {workersList.map(worker => (
                  <option key={worker._id} value={worker._id}>{worker.name}</option>

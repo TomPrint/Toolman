@@ -14,7 +14,6 @@ const WorkerForm = () => {
 
         if (!user){
             setError("Musisz być zalogowany")
-            
             return
         }
 
@@ -43,9 +42,7 @@ const WorkerForm = () => {
             console.log('new worker added', json)
             setSubmit(`Pomyślnie dodano użytkownika ${worker.name}`)
         }
-    
 } 
-
 
     return ( 
         <div className="flex justify-center h-30 max-w-[1240px] mx-auto px-4 text-white">
@@ -66,9 +63,18 @@ const WorkerForm = () => {
             value={position}
              />
 
-            <div clasName="flex justify-center items-center">
-             <button className="bg-gray-500 hover:bg-[#00df9a] transition-all duration-500 text-white rounded py-2 px-5 m-2 my-8"> Dodaj pracownika</button>
-             <Link to='/workers'><button className=" bg-gray-500 hover:bg-[#00df9a] transition-all duration-500 text-white rounded py-2 px-4 m-3 ">Wróć</button></Link> 
+            <div className="flex justify-center items-center">
+             
+             <button className="bg-gray-500 hover:bg-[#00df9a] transition-all duration-500 text-white rounded py-2 px-5 m-2 my-8">
+                Dodaj pracownika
+            </button>
+             
+             <Link to='/workers'>
+                <button className=" bg-gray-500 hover:bg-[#00df9a] transition-all duration-500 text-white rounded py-2 px-4 m-3 ">
+                    Wróć
+                </button>
+             </Link> 
+             
             </div>
             {error && <div className="error bg-[#960019] text-center">{error}</div>}
             {submit && <div className="bg-[#10742b] text-center">{submit}</div>}

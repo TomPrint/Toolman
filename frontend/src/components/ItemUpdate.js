@@ -20,6 +20,7 @@ function ItemForm() {
     const [yearOfProduction, setYearOfProduction] = useState('')
     const [workersList, setWorkersList] = useState([])
     const [atEmployee, setAtEmployee] = useState(null)
+    const [employeeName, setEmployeeName] = useState(null)
     const [image, setImage] = useState(null);
     const [error, setError] = useState(null)
     const [submit, setSubmit] = useState(null)
@@ -52,9 +53,8 @@ function ItemForm() {
           const json = await response.json()
           // to get an array of objet
           if (response.ok) {
+
             //Filing in the form with previous state GET from object ID
-            
-            // to fix - purcharse data and warranty date & atEmployee
             setTitle(json.title)
             setProducer(json.producer)
             setModel(json.model)
@@ -63,8 +63,12 @@ function ItemForm() {
             setWarrantyDate(json.warrantyDate === null ? "" : format(new Date(json.warrantyDate),'yyyy-MM-dd') )
             setYearOfProduction(json.yearOfProduction)
             setSeller(json.seller)
-            // atEmployee(json.atEmployee)
-
+            if (json.atEmployee !== null) {
+              setAtEmployee(json.atEmployee.id)
+              setEmployeeName(json.atEmployee.name)
+            }
+            
+           
           }
         }
         // fire a function 
@@ -75,8 +79,11 @@ function ItemForm() {
     
     // on select change we match value from event target to setAtEployee
     const handleChange = (event) => {
+      if (event.target.value !== 'Bez przypisania') {  
         setAtEmployee(event.target.value);
-
+      } else {
+        setAtEmployee(null)
+      }
     }
 
     //POST after submit button
@@ -178,15 +185,17 @@ function ItemForm() {
             onChange={(e) => setYearOfProduction(e.target.value)}
             value={yearOfProduction}
              />
-
+    
             <label className="block text-gray-500 text-sm py-2">Przypisz do pracownika: </label>
             <select className="text-black w-[100%]" onChange={handleChange}> 
-            <option> - Wybierz pracownika - </option>
-            {/* we map on workersList to show the names and grab id as a value */}
-            {workersList.map(worker => (
-                 <option key={worker._id} value={worker._id}>{worker.name}</option>
-            ))
-             }  
+              <option>Bez przypisania</option>
+              {/* we map on workersList to show the names and grab id as a value */}
+              {workersList.map(worker => {
+                return employeeName === worker.name ?
+                  (<option selected key={worker._id} value={worker._id}>{worker.name}</option>)
+                   : 
+                   (<option key={worker._id} value={worker._id}>{worker.name}</option>)
+              })}
             </select>
 
             {/* <label className="block text-gray-500 text-sm py-2">Zdjęcie:</label>
