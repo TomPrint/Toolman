@@ -37,21 +37,21 @@ export const AuthContextProvider = ({ children }) => {
         logout();
       } else {
         dispatch({ type: 'LOGIN', payload: user }) 
-        inactivityTimeoutIdRef.current = setTimeout(logout, 2 * 60 * 1000)  
+        inactivityTimeoutIdRef.current = setTimeout(logout, 5 * 60 * 1000)  
       }
     }
     // clear the timeout on user activity
     window.addEventListener("click", () => {
       clearTimeout(inactivityTimeoutIdRef.current);
-      inactivityTimeoutIdRef.current = setTimeout(logout, 2 * 60 * 1000)
+      inactivityTimeoutIdRef.current = setTimeout(logout, 5 * 60 * 1000)
     });
     window.addEventListener("keydown", () => {
     clearTimeout(inactivityTimeoutIdRef.current);
-    inactivityTimeoutIdRef.current = setTimeout(logout, 2 * 60 * 1000)
+    inactivityTimeoutIdRef.current = setTimeout(logout, 5 * 60 * 1000)
     });
     window.addEventListener("mousemove", () => {
     clearTimeout(inactivityTimeoutIdRef.current);
-    inactivityTimeoutIdRef.current = setTimeout(logout, 2 * 60 * 1000)
+    inactivityTimeoutIdRef.current = setTimeout(logout, 5 * 60 * 1000)
     });
     return () => {
     clearTimeout(inactivityTimeoutIdRef.current);
