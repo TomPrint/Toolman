@@ -47,8 +47,8 @@ function ItemForm() {
 
     const handleUpload = (event) => {
       const file = event.target.files[0];
-      if (file.size > 2048000) { // 2 megabytes
-        setError("Plik jest za duży, użyj pliku o rozmiarze do 2MB");
+      if (file.size > 1048000) { // 1 megabyte
+        setError("Plik jest za duży, użyj pliku o rozmiarze do 1MB");
       } else if (file.type !== "image/jpg" && file.type !== "image/png" && file.type !== "image/jpeg") {
         setError("Zły format pliku, użyj .jpeg, .jpg, .png");
       } else {

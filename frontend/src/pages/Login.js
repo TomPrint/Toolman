@@ -19,10 +19,10 @@ const Login = () => {
   return (
     <div className="flex justify-center">
     <form className="login bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" onSubmit={handleSubmit}>
-      <h3 className="block text-[#00df9a] text-sm font-bold mb-2 text-center">Log in to Toolman</h3>
+      <h3 className="block text-[#00df9a] text-sm font-bold mb-2 text-center">Zaloguj do Toolman</h3>
 
        <div className="mb-4">
-      <label className="block text-gray-700 text-sm font-bold mb-2">Email address:</label>
+      <label className="block text-gray-700 text-sm font-bold mb-2">Adres Email:</label>
       <input
         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
         type="email" 
@@ -31,7 +31,7 @@ const Login = () => {
       />
       </div>
       <div className="mb-2">
-      <label className="block text-gray-700 text-sm font-bold mb-2">Password:</label>
+      <label className="block text-gray-700 text-sm font-bold mb-2">Hasło:</label>
       <input
         className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-2 leading-tight focus:outline-none focus:shadow-outline" 
         type="password" 
