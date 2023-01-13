@@ -370,4 +370,6 @@ FRONTEND
  13/01/23 - add autologout for inactive users
  - add autologout if 2min inactive
  
-
+13/01/23 -update autologout when token expires
+-logout user when token expires
+-install on frontend jwt-decode to handle token exp time
