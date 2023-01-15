@@ -46,6 +46,10 @@ const createItem = async (req, res) => {
       warrantyDate,
       purchaseDate,
       image,
+      transmissionDate,
+      invoice,
+      price,
+      comments
     } = req.body
 
     if (!title) {
@@ -68,6 +72,10 @@ const createItem = async (req, res) => {
           seller,
           warrantyDate,
           purchaseDate,
+          transmissionDate,
+          invoice,
+          price,
+          comments,
           image: result.Location,
         })
         //if no image, don't show anything
@@ -83,6 +91,10 @@ const createItem = async (req, res) => {
           seller,
           warrantyDate,
           purchaseDate,
+          transmissionDate,
+          price,
+          comments,
+          invoice
           
         })
       }

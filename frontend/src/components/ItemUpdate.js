@@ -23,9 +23,14 @@ function ItemForm() {
     const [workersList, setWorkersList] = useState([])
     const [atEmployee, setAtEmployee] = useState(null)
     const [employeeName, setEmployeeName] = useState(null)
+    const [transmissionDate, setTransmissionDate] = useState('')
+    const [price, setPrice] = useState('')
+    const [comments, setComments] = useState('')
+    const [invoice, setInvoice]= useState('')
     const [image, setImage] = useState(null);
     const [error, setError] = useState(null)
     const [submit, setSubmit] = useState(null)
+    
    
     //Use effect to get worker data. We use workersList and setWorkersList to grab them
     useEffect(()=>{
@@ -56,6 +61,10 @@ function ItemForm() {
             //Filing in the form with previous state GET from object ID
             setTitle(json.title)
             setProducer(json.producer)
+            setInvoice(json.invoice)
+            setPrice(json.price)
+            setComments(json.comments)
+            setTransmissionDate(json.transmissionDate === null ? "" : format(new Date(json.transmissionDate),'yyyy-MM-dd') )
             setModel(json.model)
             setSerialNumber(json.serialNumber)
             setPurchaseDate(json.purchaseDate === null ? "" : format(new Date(json.purchaseDate),'yyyy-MM-dd') )
@@ -87,8 +96,11 @@ function ItemForm() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         const data = new FormData();
-        // data.append("image", image);
         data.append("title", title);
+        data.append("invoice", invoice)
+        data.append("price", price)
+        data.append("transmissionDate", transmissionDate)
+        data.append("comments", comments)
         data.append("model", model);
         data.append("producer", producer);
         data.append("serialNumber", serialNumber);
@@ -102,7 +114,11 @@ function ItemForm() {
         
         const response = await fetch(`/api/tools/items/update/${itemId}`, {
           method: "PUT",
-          body: JSON.stringify({title,model,producer,atEmployee,data, purchaseDate,warrantyDate,seller,yearOfProduction,serialNumber}),
+          body: JSON.stringify({
+            title,model,producer,atEmployee,data,
+            purchaseDate,warrantyDate,seller,yearOfProduction,
+            serialNumber, invoice, price, transmissionDate, comments
+          }),
           headers: {
             "Authorization": `Bearer ${user.token}`,
             'Content-Type':'application/json',
@@ -169,12 +185,26 @@ function ItemForm() {
             value={warrantyDate}
              />
 
+            <label className="block text-gray-500 text-sm py-2">Cena zakupu:</label>
+            <input className="text-black w-[100%]"
+            type="text"
+            onChange={(e) => setPrice(e.target.value)}
+            value={price}
+            />
+
             <label className="block text-gray-500 text-sm py-2">Sprzedawca:</label>
             <input className="text-black w-[100%]"
             type="text"
             onChange={(e) => setSeller(e.target.value)}
             value={seller}
              />
+
+            <label className="block text-gray-500 text-sm py-2">Numer faktury:</label>
+            <input className="text-black w-[100%]"
+            type="text"
+            onChange={(e) => setInvoice(e.target.value)}
+            value={invoice}
+            />
 
             <label className="block text-gray-500 text-sm py-2">Rok produkcji:</label>
             <input className="text-black w-[100%]"
@@ -194,6 +224,20 @@ function ItemForm() {
                    (<option key={worker._id} value={worker._id}>{worker.name}</option>)
               })}
             </select>
+
+            <label className="block text-gray-500 text-sm py-2">Przekazne pracownikowi:</label>
+            <input className="text-black w-[100%]"
+            type="date"
+            onChange={(e) => setTransmissionDate(e.target.value)}
+            value={transmissionDate}
+            />
+
+            <label className="block text-gray-500 text-sm py-2">Uwagi:</label>
+            <input className="text-black w-[100%]"
+            type="text"
+            onChange={(e) => setComments(e.target.value)}
+            value={comments}
+            />
 
             <div className="flex justify-center items-center">
              <button className="  bg-gray-500 hover:bg-[#00df9a] transition-all duration-500 text-white rounded py-2 px-5 m-2 my-8">Aktualizuj</button>

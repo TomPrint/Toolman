@@ -9,12 +9,17 @@ function ItemForm() {
     const [seller, setSeller] = useState('')
     const [purchaseDate, setPurchaseDate] = useState('')
     const [warrantyDate, setWarrantyDate] = useState('')
+    const [transmissionDate, setTransmissionDate] = useState('')
     const [model, setModel] = useState('')
+    const [price, setPrice] = useState('')
+    const [comments, setComments] = useState('')
+    const [invoice, setInvoice]= useState('')
     const [serialNumber, setSerialNumber] = useState('')
     const [yearOfProduction, setYearOfProduction] = useState('')
     const [workersList, setWorkersList] = useState([])
     const [atEmployee, setAtEmployee] = useState(null)
     const [image, setImage] = useState(null);
+   
     const [error, setError] = useState(null)
     const [submit, setSubmit] = useState(null)
     const {user} = useAuthContext()
@@ -61,6 +66,10 @@ function ItemForm() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         const data = new FormData();
+        data.append("invoice", invoice)
+        data.append("price", price)
+        data.append("transmissionDate", transmissionDate)
+        data.append("comments", comments)
         data.append("image", image);
         data.append("title", title);
         data.append("model", model);
@@ -95,6 +104,10 @@ function ItemForm() {
           setSeller("");
           setWarrantyDate("");
           setPurchaseDate("");
+          setTransmissionDate("");
+          setInvoice("");
+          setPrice("");
+          setComments("");
           setError(null);
           console.log("new item added", json);
           setSubmit(`Dodano narzędzie: ${title}`);
@@ -149,12 +162,26 @@ function ItemForm() {
             value={warrantyDate}
              />
 
+            <label className="block text-gray-500 text-sm py-2">Cena zakupu:</label>
+            <input className="text-black w-[100%]"
+            type="text"
+            onChange={(e) => setPrice(e.target.value)}
+            value={price}
+            />
+
             <label className="block text-gray-500 text-sm py-2">Sprzedawca:</label>
             <input className="text-black w-[100%]"
             type="text"
             onChange={(e) => setSeller(e.target.value)}
             value={seller}
              />
+
+            <label className="block text-gray-500 text-sm py-2">Numer faktury:</label>
+            <input className="text-black w-[100%]"
+            type="text"
+            onChange={(e) => setInvoice(e.target.value)}
+            value={invoice}
+            />
 
             <label className="block text-gray-500 text-sm py-2">Rok produkcji:</label>
             <input className="text-black w-[100%]"
@@ -172,6 +199,20 @@ function ItemForm() {
             ))
              }  
             </select>
+             
+            <label className="block text-gray-500 text-sm py-2">Przekazne pracownikowi:</label>
+            <input className="text-black w-[100%]"
+            type="date"
+            onChange={(e) => setTransmissionDate(e.target.value)}
+            value={transmissionDate}
+            />
+
+            <label className="block text-gray-500 text-sm py-2">Uwagi:</label>
+            <input className="text-black w-[100%]"
+            type="text"
+            onChange={(e) => setComments(e.target.value)}
+            value={comments}
+            />
 
             <label className="block text-gray-500 text-sm py-2" htmlFor="image">
           Zdjęcie:
