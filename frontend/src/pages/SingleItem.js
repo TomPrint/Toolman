@@ -66,6 +66,8 @@ const SingleItem = () => {
              <p>S/N: <span className="text-[#00df9a] text-sm">{item.serialNumber}</span></p>
              <p>Rok produkcji: <span className="text-[#00df9a] text-sm">{item.yearOfProduction}</span></p>
              <p>Sprzedawca: <span className="text-[#00df9a] text-sm">{item.seller}</span> </p>
+             <p>Faktura zakupu: <span className="text-[#00df9a] text-sm">{item.invoice}</span> </p>
+             <p>Cena: <span className="text-[#00df9a] text-sm">{item.price}</span> </p>
              <p>Data zakupu: <span className="text-[#00df9a] text-sm">
                 {item.purchaseDate && format(new Date(item.purchaseDate),'dd/MM/yyyy')}
                 </span></p>
@@ -73,7 +75,12 @@ const SingleItem = () => {
                 {item.warrantyDate && format(new Date(item.warrantyDate),'dd/MM/yyyy')}
                 </span></p>
              <p>U pracownika: <span className="text-[#00df9a] text-sm">{item.atEmployee && item.atEmployee.name}</span></p>
-            
+             <p>Przekazane: <span className="text-[#00df9a] text-sm">
+                {item.transmissionDate && format(new Date(item.transmissionDate),'dd/MM/yyyy')}
+                </span></p>
+             <p>Uwagi: <span className="text-[#00df9a] text-sm">{item.comments}</span></p>
+
+
             {/* If no picture, don't show picture tag */}
              {item.image ?<p>Zdjęcie:<img src={item.image} alt="zdjęcie" 
            className="hover:opacity-75 cursor-pointer rounded overflow-hidden shadow-lg shadow-cyan-500/40 border-solid border-cyan-700 border-2 my-3"

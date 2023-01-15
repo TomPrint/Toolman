@@ -36,6 +36,23 @@ const itemSchema = new Schema ({
         type: Date,
         required: false,
     },
+    transmissionDate: {
+        type: Date,
+        required: false,
+    },
+    price: {
+        type: String,
+        required: false,
+    },
+    comments: {
+        type: String,
+        required: false,
+    },
+    invoice: {
+        type: String,
+        required: false,
+    },
+
     //Linking Worker model to an Item
     atEmployee: {
         type: mongoose.Schema.Types.ObjectId,
