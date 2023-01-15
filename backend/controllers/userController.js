@@ -1,7 +1,7 @@
 const User = require("../models/userModel");
 const mongoose = require('mongoose')
 const jwt = require("jsonwebtoken");
-
+const nodemailer = require('nodemailer')
 
 
 const createToken = (_id) => {
@@ -81,4 +81,55 @@ const deleteUser = async (req,res) => {
 }
 
 
-module.exports = { signupUser, loginUser, getUsers, deleteUser };
+//! RESET password
+const resetPassword = async (req, res) => {
+  const { email } = req.body;
+
+  try {
+    // Find the user by email
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    // Generate token to reset password
+    const resetToken = jwt.sign({ _id: user._id }, process.env.SECRET, { expiresIn: "1h" });
+    // Set the reset token on the user
+    user.resetPasswordToken = resetToken;
+    await user.save();
+
+    // Send an email to the user with the reset link
+    const resetLink = `http://localhost:${process.env.PORT}/api/user/reset-password/${resetToken}`;
+    console.log('resetLink')
+   
+    // Send email 
+   const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: 'your-email-address@gmail.com',
+        pass: 'your-email-password'
+      }
+    });
+
+    const mailOptions = {
+      from: 'your-email-address@gmail.com',
+      to: 'receiver-email-address@example.com',
+      subject: 'Password Reset Link',
+      text: 'Please use this link to reset your password: ' + resetLink
+    };
+    
+    transporter.sendMail(mailOptions, function(error, info){
+      if (error) {
+        console.log(error);
+      } else {
+        console.log('Email sent: ' + info.response);
+      }
+    });
+
+    res.status(200).json({ message: "Password reset request with link has been sent" });
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
+module.exports = { signupUser, loginUser, getUsers, deleteUser, resetPassword };

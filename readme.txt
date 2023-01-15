@@ -374,10 +374,13 @@ FRONTEND
 -logout user when token expires
 -install on frontend jwt-decode to handle token exp time
 
+15/01/23 - initial password reset setup
+- initial password reset setup at the backend
+- 'npm install nodemailer' to handle email notifications
+
 15/01/23 - item model update + home view
 - update item model with a new fields - price,invoice,comments,transmissionDate
 - update itemController with that new fields
 - uddate itemForm and itemUpdate and SigleItem with that new fields
 - create worker & items tables in Home view
 - create PDF with all items in Home view
-
