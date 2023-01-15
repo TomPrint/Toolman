@@ -373,3 +373,7 @@ FRONTEND
 13/01/23 -update autologout when token expires
 -logout user when token expires
 -install on frontend jwt-decode to handle token exp time
+
+15/01/23 - initial password reset setup
+- initial password reset setup at the backend
+- 'npm install nodemailer' to handle email notifications
