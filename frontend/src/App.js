@@ -1,5 +1,6 @@
 //BrowserRouter surround everything that needs routing
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { useEffect, useState } from 'react'
 
 //pages & components
 import Home from "./pages/Home";
@@ -24,9 +25,16 @@ import { useIsAdmin } from './hooks/useAdmin'
 function App() {
   const { user } = useAuthContext()
   const isAdmin = useIsAdmin()
+  const [loggedIn, setLoggedIn] = useState(null);
+
+  useEffect(() => {
+      const loggedUser = localStorage.getItem('user');
+      setLoggedIn(Boolean(loggedUser));
+    }, []);
 
   return (
     <div className="App">
+       { loggedIn !== null &&
       <BrowserRouter>
         <Navbar />
         <div className="pages text-white">
@@ -47,6 +55,7 @@ function App() {
           {/* <Footer /> */}
         </div>
       </BrowserRouter>
+       }
     </div>
   );
 }
