@@ -2,6 +2,7 @@ const User = require("../models/userModel");
 const mongoose = require("mongoose");
 const jwt = require("jsonwebtoken");
 const nodemailer = require("nodemailer");
+const bcrypt = require("bcrypt");
 
 const createToken = (_id) => {
   return jwt.sign({ _id }, process.env.SECRET, { expiresIn: "2d" });
@@ -147,7 +148,10 @@ const resetPasswordToken = async (req, res) => {
       return res.status(404).json({ error: "Brak Użytkownika" });
     }
 
-    user.password = password;
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(password, salt);
+  
+    user.password = hashedPassword;
     user.resetPasswordToken = undefined;
     await user.save();
 
