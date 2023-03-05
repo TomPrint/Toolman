@@ -18,7 +18,9 @@ import { useAuthContext } from './hooks/useAuthContext'
 import WorkerItems from "./pages/WorkerItems";
 import SingleItem from "./pages/SingleItem";
 import ItemUpdate from "./components/ItemUpdate"
+import ResetPasswordForm from "./pages/ResetPasswordForm";
 import { useIsAdmin } from './hooks/useAdmin'
+import ResetPasswordPage from "./pages/ResetPasswordWithToken";
 
 
 
@@ -51,6 +53,8 @@ function App() {
             <Route path="/workers/add" element={isAdmin ? <WorkerForm /> : <Navigate to="/login" />} />
             <Route path="/workers/:workerId/items" element={user ? <WorkerItems /> : <Navigate to="/login" />} />
             <Route path="/manage" element={isAdmin ? <ManageUser /> : <Navigate to="/login" />} />
+            <Route path="/resetpassword" element={<ResetPasswordForm /> } />
+            <Route path="/api/user/reset-password/:token" element={<ResetPasswordPage/>} />
           </Routes>
           {/* <Footer /> */}
         </div>

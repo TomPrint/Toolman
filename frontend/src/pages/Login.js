@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { useLogin } from "../hooks/useLogin"
+import { Link } from 'react-router-dom'
 
 
 const Login = () => {
@@ -45,7 +46,9 @@ const Login = () => {
       {error && <div className="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800 mt-2">
         {error}</div>}
       </div>
+      <Link to='/resetpassword'><div className="block text-[#00df9a] text-xs font-bold mt-5 text-center">Nie pamiętasz hasła?</div></Link>
     </form>
+    
     </div>
  
   )
