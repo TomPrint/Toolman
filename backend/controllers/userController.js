@@ -85,8 +85,8 @@ const resetPassword = async (req, res) => {
     // Find the user by email
     const user = await User.findOne({ email });
     if (!user) {
-      console.log("coś nie tak");
-      return res.status(404).json({ error: "Brak Użytkownika" });
+      
+      return res.status(404).json({ error: error.message });
     }
 
     const payload = { _id: user._id };
@@ -94,7 +94,7 @@ const resetPassword = async (req, res) => {
 
     // Generate token to reset password
     const resetToken = jwt.sign(payload, process.env.SECRET, {
-      expiresIn: "20m",
+      expiresIn: "10m",
     });
     // Set the reset token on the user
     user.resetPasswordToken = resetToken;
@@ -130,11 +130,13 @@ const resetPassword = async (req, res) => {
 
     res
       .status(200)
-      .json({ message: "Password reset request with link has been sent" });
+      .json({ message: "Na adres email wysłano link do resetu hasła." });
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
 };
+
+// ! Verify Token and Password Change
 
 const resetPasswordToken = async (req, res) => {
   const { resetToken } = req.params;
@@ -145,7 +147,7 @@ const resetPasswordToken = async (req, res) => {
     const decoded = jwt.verify(resetToken, process.env.SECRET);
     const user = await User.findById(decoded._id);
     if (!user) {
-      return res.status(404).json({ error: "Brak Użytkownika" });
+      return res.status(404).json({ error: error.message });
     }
 
     const salt = await bcrypt.genSalt(10);
@@ -155,7 +157,7 @@ const resetPasswordToken = async (req, res) => {
     user.resetPasswordToken = undefined;
     await user.save();
 
-    res.status(200).json({ message: "Password reset successful" });
+    res.status(200).json({ message: "Zresetowano Hasło" });
   } catch (error) {
     res.status(400).json({ error: error.message });
   }

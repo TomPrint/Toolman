@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom'
 
 const ResetPasswordForm = () => {
   const [email, setEmail] = useState('');
-  const [successMessage, setSuccessMessage] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
+  const [message, setMessage] = useState('');
+  const [error, setError] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -16,12 +16,19 @@ const ResetPasswordForm = () => {
         },
         body: JSON.stringify({ email }),
       });
-      const data = await response.json();
-      setSuccessMessage(data.message);
-      setErrorMessage('');
+      
+
+      if (response.ok) {
+        setMessage("Wysłano link z resetem hasła!")
+        setError("")
+
+      } else {
+        setError("Użytkownik nie istnieje.");
+        setMessage("");
+      }
     } catch (error) {
-      setErrorMessage(error);
-      setSuccessMessage('');
+      setError("Coś poszło nie tak, spróbuj ponownie.");
+      setMessage("");
     }
   };
 
@@ -42,10 +49,11 @@ return (
         <div className="container min-w-full flex flex-col items-center">
       <button type="submit" className=" bg-gray-500 hover:bg-[#00df9a] text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Reset Hasła</button>
       <Link to='/login'><button className=" bg-gray-500 hover:bg-[#00df9a] text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mt-4">Wróć</button></Link>
-      {errorMessage && <div className="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800 mt-2">
-        {errorMessage}</div>}
-        {successMessage && <div className="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800 mt-2">
-        {successMessage}</div>}
+      {error && <div className="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800 mt-2">
+          {error}</div>}
+          
+        {message && <div className="p-4 mb-4 text-sm text-gray-700 bg-green-100 rounded-lg dark:bg-green-200 dark:text-green-800 mt-2">
+          {message}</div>}
       </div>
     
     </form>
