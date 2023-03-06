@@ -384,3 +384,7 @@ FRONTEND
 - uddate itemForm and itemUpdate and SigleItem with that new fields
 - create worker & items tables in Home view
 - create PDF with all items in Home view
+
+15/01/23 - reset password functionality
+- update userController and routes
+- create password reset page and password change page
