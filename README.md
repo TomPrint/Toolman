@@ -2,7 +2,7 @@
 
 # <img src="https://github.com/Klewiu/Toolman/blob/master/frontend/src/Logo_Toolman.PNG" />
 Toolman is a <img src="https://upload.wikimedia.org/wikipedia/commons/9/94/MERN-logo.png" width="auto" height="40" align="center" margin="1px" /> stack project created to help manage tools in manufacturing or construction companies. 
-The main task of the application is to link tools to specific employees, thanks to which we can receive the status of all tools entrusted to a given person at a given moment. Application uses css framework  <img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Tailwind_CSS_logo.svg"  width="auto" height="15" align="center" margin="1px"/>
+The main task of the application is to link tools to specific employees, thanks to which we can receive the status of all tools entrusted to a given person at a given moment. Application uses css framework  <img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Tailwind_CSS_logo.svg"  width="auto" height="15" align="center" margin="1px"/> and utilizes image upload to <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Amazon_Web_Services_Logo.svg/512px-Amazon_Web_Services_Logo.svg.png?20170912170050" width="auto" height="15" align="center" margin="1px"/> S3 Bucket.
 
 
 ## Main features:
